@@ -9,7 +9,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/axon.png',
+  favicon: 'img/axon.svg',
   organizationName: 'nervosnetwork', // Usually your GitHub org/user name.
   projectName: 'axon-docs', // Usually your repo name.
   i18n: {

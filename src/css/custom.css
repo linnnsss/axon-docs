@@ -350,7 +350,8 @@ main > div.container > div.row > div:nth-child(2) {
 }
 
 .navbar__logo {
-  margin: 0 7px 4px 7px;
+  margin: 0;
+  height: 2.5rem;
 }
 
 .navbar__items--right {
