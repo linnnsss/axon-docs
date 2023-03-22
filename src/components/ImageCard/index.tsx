@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import ThemedImage from '@theme/ThemedImage';
+import styles from './styles.module.css';
 import {Property} from "csstype";
 
 interface Props {
@@ -24,7 +25,7 @@ export default function ImageCard({title, light, dark, url, description, imagePo
 
     const Text = () =>
         <div className="card__body text">
-            <Link to={url}>
+            <Link to={url} className={styles.link}>
                 {typeof (title) === 'string' ?
                     <em>{title}</em> :
                     title
