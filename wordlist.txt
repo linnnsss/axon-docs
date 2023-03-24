@@ -241,3 +241,16 @@ Forcerelay
 relayer
 L2
 Precompile
+interoperable
+natively
+verifier
+hardcoded
+IOPSA
+EdDSA
+keccak
+syscall
+inexistent
+SDK
+precompile
+precompiled
+WIP
