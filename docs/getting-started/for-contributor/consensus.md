@@ -1,7 +1,7 @@
 ---
 title: Consensus
 hide_title: true
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";

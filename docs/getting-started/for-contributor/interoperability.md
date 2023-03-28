@@ -1,7 +1,7 @@
 ---
 title: Interoperability
 hide_title: true
-sidebar_position: 8
+sidebar_position: 3
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";

@@ -1,7 +1,7 @@
 ---
 title: Network
 hide_title: true
-sidebar_position: 8
+sidebar_position: 5
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";

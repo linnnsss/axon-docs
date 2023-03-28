@@ -1,7 +1,7 @@
 ---
-title: Image Cell System Contract
+title: Image Cell
 hide_title: true
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
