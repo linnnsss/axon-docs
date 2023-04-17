@@ -12,7 +12,7 @@ Axon’s storage module works as a bridge between Axon and its database interfac
 
 Located at the bottom of Axon's architecture, the storage module serves as the block and state databases, as depicted below:
 
-<img src={useBaseUrl("img/for-contributors/Fig1 overall architecture.png")}/>
+<img src={useBaseUrl("img/for-contributors/storage fig 1 overall architecture.png")}/>
 
 <p class="axon-anno">Figure 1. A high-level view of Axon’s overall architecture and the location of the storage module</p>
 
@@ -22,7 +22,7 @@ The purpose of this article is to introduce the basics of Axon's storage module 
 
 Axon storage module ([GitHub repo](https://github.com/axonweb3/axon/tree/dc9de2220a42d61ed2b4e6624ef5faf6a64a6223/core/storage)) is used to store persistent data.
 
-<img src={useBaseUrl("img/for-contributors/Fig2 storage module design.png")}/>
+<img src={useBaseUrl("img/for-contributors/storage fig 2.png")}/>
 
 <p class="axon-anno">Figure 2. The design of Axon’s storage module and other related components</p>
 
