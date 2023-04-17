@@ -11,14 +11,14 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 Before proceeding, we recommend reading the following pieces to fully grasp this article, as they provide prerequisite knowledge:
 
 - [Axon Fundamentals](https://docs.axonweb3.io/fundamentals)
-- [Image Cell System Contract](https://docs.axonweb3.io/getting-started/for-contributor/icsc)
+- [Image Cell System Contract](https://docs.axonweb3.io/getting-started/for-contributor/system_contract/image_cell)
 
 :::
 
 This article introduces the design of Axon’s interoperable transaction module. 
 Let’s start with a brief recap on interoperability. Interoperability, in the realm of blockchain, refers to the ability of blockchains to communicate with one another, thereby enabling a blockchain to access data from and write data to other blockchains. However, a blockchain is akin to a computer devoid of an internet connection. It lacks the innate capabilities to communicate with other blockchains or [external API](https://blog.chain.link/understanding-how-data-and-apis-power-next-generation-economies/), commonly known as the [oracle problem](https://encyclopedia.pub/entry/2959). Interoperability provides a powerful solution to this issue, enabling seamless integration of various blockchain systems, making it possible to create complex, decentralized applications that leverage the benefits of multiple blockchains.
 
-Axon is an app-chain[^1] framework that natively supports interoperability. It is compatible with the Inter-Blockchain Communication (IBC) protocol, thereby enabling itself to communicate with any other IBC compatible chains. Axon also involves CKB-VM, a virtual machine used in CKB that is based on [RISC-V](https://riscv.org/) instruction set. Combined with the [Image Cell System Contract (ICSC)](https://docs.axonweb3.io/getting-started/for-contributor/icsc), Axon can execute any scripts deployed on CKB. This significantly enhances the interoperability of Axon and makes abstraction possible under the account model and EVM.
+Axon is an app-chain[^1] framework that natively supports interoperability. It is compatible with the Inter-Blockchain Communication (IBC) protocol, thereby enabling itself to communicate with any other IBC compatible chains. Axon also involves CKB-VM, a virtual machine used in CKB that is based on [RISC-V](https://riscv.org/) instruction set. Combined with the [Image Cell System Contract (ICSC)](https://docs.axonweb3.io/getting-started/for-contributor/system_contract/image_cell), Axon can execute any scripts deployed on CKB. This significantly enhances the interoperability of Axon and makes abstraction possible under the account model and EVM.
 
 ## Interoperable Transaction Outlined
 As it is known, Ethereum uses the Elliptic Curve Digital Signature (ECDSA) with secp256k1 curve to sign transactions. However, transactions on Axon are expected to be verified by a broader range of curves or even more intricate logic. This challenge is addressed by the built-in CKB-VM module included in the interoperable transaction verifier.
