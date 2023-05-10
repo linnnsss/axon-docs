@@ -6,16 +6,16 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## System Contracts
+# System Contracts
 
-### Metadata
+## Metadata
 
-#### Address
+### Address
 ```
 0x10000000000000000001
 ```
 
-#### ABI
+### ABI
 <details><summary>(click here to view ABI)</summary>
 
 ```json
@@ -122,11 +122,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
             "internalType": "uint64",
             "name": "max_tx_size",
             "type": "uint64"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "last_checkpoint_block_hash",
-            "type": "bytes32"
           }
         ],
         "internalType": "struct MetadataManager.Metadata",
@@ -256,11 +251,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
             "internalType": "uint64",
             "name": "max_tx_size",
             "type": "uint64"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "last_checkpoint_block_hash",
-            "type": "bytes32"
           }
         ],
         "internalType": "struct MetadataManager.Metadata",
@@ -314,14 +304,14 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 </details>
 
-### CKB Light Client
+## CKB Light Client
 
-#### Address
+### Address
 ```
 0x10000000000000000003
 ```
 
-#### ABI
+### ABI
 <details><summary>(click here to view ABI)</summary>
 
 ```json
@@ -432,12 +422,12 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 </details>
 
-### Image Cell
-#### Address
+## Image Cell
+### Address
 ```
 0x10000000000000000004
 ```
-#### ABI
+### ABI
 <details><summary>(click here to view ABI)</summary>
 
 ```json

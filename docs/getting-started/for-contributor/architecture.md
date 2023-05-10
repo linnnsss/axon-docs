@@ -6,6 +6,6 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Architecture
+# Architecture
 
 🛠 This page is a work in progress. 🚧

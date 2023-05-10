@@ -6,6 +6,8 @@ sidebar_position: 3
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
+# Interoperability
+
 :::tip
 
 Before proceeding, we recommend reading the following pieces to fully grasp this article, as they provide prerequisite knowledge:
@@ -244,9 +246,6 @@ To expand the interoperability of EVM, Axon provides some precompile contracts t
 ### Precompile Contracts
 
 🚧 WIP. WE WILL UPDATE SOON! 🚧
-
-
-
 
 ## Footnotes
 [^1]: Axon contains two types of contracts: general contracts and system contracts. The main difference is that system contracts are written in Rust only. Compared with general contracts, system contracts can invoke more system resources, such as storage. Besides, system contracts are not necessarily stored in EVM MPT, since they have their own storage space.

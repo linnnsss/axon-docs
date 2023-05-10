@@ -6,7 +6,7 @@ sidebar_position: 2
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Send Transactions On Axon Via MetaMask
+# Send Transactions On Axon Via MetaMask
 
 To proceed with this guide, you must have MetaMask installed. Visit [Metamask](https://metamask.io/) and you will be automatically guided to the relevant store to download the extension or app based on the device and browser you’re using.
 
@@ -25,7 +25,6 @@ Once the node has been successfully set up, you will notice that the block heigh
 ### 1.2 Add Axon to MetaMask's Local Network
 
 #### Open Setting
-
 
 <img alt="open settings" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/2.1_open_settings.png")}  width="50%"/>
 
@@ -94,4 +93,3 @@ Click <b>Confirm</b>.
 You'll see that the transaction is in <b>Pending</b>. It takes a few seconds for the status to change, then you'll know that the transaction has been successful and the balance is 100 AXON less.
 
 <img alt="Untitled 5" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 5.png")}  width="80%"/>
-

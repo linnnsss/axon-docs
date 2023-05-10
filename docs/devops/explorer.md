@@ -6,6 +6,6 @@ sidebar_position: 2
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Explorer
+# Explorer
 
 🛠 This page is a work in progress. 🚧

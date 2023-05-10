@@ -6,6 +6,6 @@ sidebar_position: 4
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Consensus
+# Consensus
 
 🛠 This page is a work in progress. 🚧

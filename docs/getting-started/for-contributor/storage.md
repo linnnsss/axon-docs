@@ -6,7 +6,7 @@ sidebar_position: 8
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Storage Module
+# Storage
 
 Axon’s storage module works as a bridge between Axon and its database interface, handling the data I/O of other Axon modules.
 

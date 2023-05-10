@@ -6,6 +6,6 @@ sidebar_position: 3
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Deploy DApps
+# Deploy DApps
 
 🛠 This page is a work in progress. 🚧

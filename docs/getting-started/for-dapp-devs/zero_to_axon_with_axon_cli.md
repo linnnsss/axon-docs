@@ -6,7 +6,7 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-## Zero to Axon with Axon-CLI
+# Zero to Axon with Axon-CLI
 
 Axon-CLI is an all-in-one command-line interface that makes operating Axon fast and easy. It contains initialization, DevOps, and cross-chain requests, among other functions.
 
@@ -111,6 +111,5 @@ CKB docs and technical reference: https://docs.nervos.org/
 
 Learn how to get started with EVM and deploy Solidity-based smart contracts in Hardhat environment.
 
-Solidity : https://docs.soliditylang.org/
-
-Hardhat : https://hardhat.org/
+Solidity: https://docs.soliditylang.org/en/latest/
+Hardhat: https://hardhat.org/
