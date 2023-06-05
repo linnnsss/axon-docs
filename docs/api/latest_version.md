@@ -12,12 +12,13 @@ JSON-RPC API Endpoints allow you to interact with a local or remote Axon node us
 
 ## Gossip Methods
 
-Gossip methods track the head of the chain. In this way, transactions can move through the network and find their way into blocks; clients can discover new blocks as well. 
+Gossip methods track the head of the chain. In this way, transactions can move through the network and find their way into blocks; clients can discover new blocks as well.
 
 ### `eth_sendRawTransaction`
+
 * `eth_sendRawTransaction(data)`
-    * `data`: [`Hex`](#type-Hex) 
-* result: [`H256`](#type-H256) 
+  * `data`: [`Hex`](#type-Hex)
+* result: [`H256`](#type-H256)
 
 Submits a pre-signed transaction for broadcast to the Axon network.
 
@@ -35,12 +36,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_sendRawTransaction",
-	"params": [
-		"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_sendRawTransaction",
+ "params": [
+  "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+ ]
 }
 ```
 
@@ -48,15 +49,16 @@ Response
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
+ "id": 1,
+ "jsonrpc": "2.0",
+ "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
 }
 ```
 
 ### `eth_blockNumber`
+
 * `eth_blockNumber()`
-* result: [`U256`](#type-U256) 
+* result: [`U256`](#type-U256)
 
 Returns the current `latest` block number.
 
@@ -74,10 +76,10 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_blockNumber",
-	"params": []
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_blockNumber",
+ "params": []
 }
 ```
 
@@ -85,18 +87,19 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x3466",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x3466",
+ "id": 2
 }
 ```
 
 ### `eth_submitWork`
+
 * `eth_submitWork(nc,hash,summary)`
-    * `nc`: [`U256`](#type-U256)
-    * `hash`: [`H256`](#type-H256)
-    * `summary`: [`Hex`](#type-Hex)
-* result: [`bool`](#type-bool) 
+  * `nc`: [`U256`](#type-U256)
+  * `hash`: [`H256`](#type-H256)
+  * `summary`: [`Hex`](#type-Hex)
+* result: [`bool`](#type-bool)
 
 Used for submitting a proof-of-work solution. Since the axon does not use it, so returns `true` forever.
 
@@ -116,13 +119,13 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_submitWork",
-	"params": [
-	 "0x0000000000000001", 
-	 "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", "0xD1GE5700000000000000000000000000D1GE5700000000000000000000000000"
-	],
-	"id": 64
+ "jsonrpc": "2.0",
+ "method": "eth_submitWork",
+ "params": [
+  "0x0000000000000001", 
+  "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", "0xD1GE5700000000000000000000000000D1GE5700000000000000000000000000"
+ ],
+ "id": 64
 }
 ```
 
@@ -130,18 +133,19 @@ Response
 
 ```json
 {
-	"id":64,
-	"jsonrpc":"2.0",
-	"result": true
+ "id":64,
+ "jsonrpc":"2.0",
+ "result": true
 }
 
 ```
 
 ### `eth_submitHashrate`
+
 * `eth_submitHashrate(hash_rate,client_id)`
-    * `hash_rate`: [`Hex`](#type-Hex)
-    * `client_id`: [`Hex`](#type-Hex)
-* result: [`bool`](#type-bool) 
+  * `hash_rate`: [`Hex`](#type-Hex)
+  * `client_id`: [`Hex`](#type-Hex)
+* result: [`bool`](#type-bool)
 
 Used for submitting mining hashrate. This method always returns true.
 
@@ -160,12 +164,12 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_submitHashrate",
-	"params": [
-	 "0x0000000000000000000000000000000000000000000000000000000000500000", "0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"
-	],
-	"id": 64
+ "jsonrpc": "2.0",
+ "method": "eth_submitHashrate",
+ "params": [
+  "0x0000000000000000000000000000000000000000000000000000000000500000", "0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"
+ ],
+ "id": 64
 }
 ```
 
@@ -173,9 +177,9 @@ Response
 
 ```json
 {
-	"id":64,
-	"jsonrpc":"2.0",
-	"result": true
+ "id":64,
+ "jsonrpc":"2.0",
+ "result": true
 }
 
 ```
@@ -185,10 +189,11 @@ Response
 History methods retrieve the historical records of every block since the genesis. This is like one large append-only file, and includes all block headers, block bodies, uncle blocks, and transaction receipts.
 
 ### `eth_getBlockByNumber`
+
 * `eth_getBlockByNumber(number,show_rich_tx)`
-    * `number`: [`BlockId`](#type-BlockId) `|` `"earliest"` `|` `"latest"` `|` `"pending"`
-    * `show_rich_tx`: [`bool`](#type-bool)
-* result: [`BlockView`](#type-Blockview) 
+  * `number`: [`BlockId`](#type-BlockId) `|` `"earliest"` `|` `"latest"` `|` `"pending"`
+  * `show_rich_tx`: [`bool`](#type-bool)
+* result: [`BlockView`](#type-Blockview)
 
 Returns information about a block by block number.
 
@@ -207,13 +212,13 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getBlockByNumber",
-	"params": [
-		"0x1b4",
-		true
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getBlockByNumber",
+ "params": [
+  "0x1b4",
+  true
+ ]
 }
 ```
 
@@ -221,63 +226,64 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"hash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"parentHash": "0xd619791daa02617ae2825a4ad7f2eb1379a069ac7b96b1628e75e1e654d5163c",
-		"sha3Uncles": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"author": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
-		"miner": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
-		"stateRoot": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
-		"transactionsRoot": "0x30fe4f21201c335b4501d517872d4d26bec39d350f987ee94e46e27bf7c48aae",
-		"receiptsRoot": "0x77f8178b9f5a0e4aa59ee10d3d96cacfd0d6137fd3728cc01b5e5d6d74f6813f",
-		"number": "0x1b4",
-		"gasUsed": "0xc665442",
-		"gasLimit": "0x1c9c380",
-		"extraData": "0x",
-		"logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000",
-		"timestamp": "0x62e00014",
-		"difficulty": "0x1",
-		"totalDifficulty": null,
-		"sealFields": [],
-		"baseFeePerGas": "0x539",
-		"uncles": [],
-		"transactions": [{
-			"type": "0x2",
-			"blockNumber": "0x1b4",
-			"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-			"hash": "0xde3e1e12fb3f1a5b6ca32f580f0e7f170195f7a5233eb7d7095c53d7f5c519f5",
-			"nonce": "0x2",
-			"transactionIndex": "0x1b71",
-			"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-			"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-			"value": "0x0",
-			"gas": "0x0",
-			"gasPrice": "0x77359400",
-			"maxFeePerGas": "0x539",
-			"maxPriorityFeePerGas": "0x77359400",
-			"raw": "0x02f8af05028477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a07bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6a033e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3",
-			"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-			"publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d355f97070",
-			"accessList": [],
-			"chainId": "0x5",
-			"v": "0x0",
-			"r": "0x7bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6",
-			"s": "0x33e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3"
-		}],
-		"size": "0x28f",
-		"mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"nonce": "0x0"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "hash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "parentHash": "0xd619791daa02617ae2825a4ad7f2eb1379a069ac7b96b1628e75e1e654d5163c",
+  "sha3Uncles": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "author": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
+  "miner": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
+  "stateRoot": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
+  "transactionsRoot": "0x30fe4f21201c335b4501d517872d4d26bec39d350f987ee94e46e27bf7c48aae",
+  "receiptsRoot": "0x77f8178b9f5a0e4aa59ee10d3d96cacfd0d6137fd3728cc01b5e5d6d74f6813f",
+  "number": "0x1b4",
+  "gasUsed": "0xc665442",
+  "gasLimit": "0x1c9c380",
+  "extraData": "0x",
+  "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp": "0x62e00014",
+  "difficulty": "0x1",
+  "totalDifficulty": null,
+  "sealFields": [],
+  "baseFeePerGas": "0x539",
+  "uncles": [],
+  "transactions": [{
+   "type": "0x2",
+   "blockNumber": "0x1b4",
+   "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+   "hash": "0xde3e1e12fb3f1a5b6ca32f580f0e7f170195f7a5233eb7d7095c53d7f5c519f5",
+   "nonce": "0x2",
+   "transactionIndex": "0x1b71",
+   "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+   "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+   "value": "0x0",
+   "gas": "0x0",
+   "gasPrice": "0x77359400",
+   "maxFeePerGas": "0x539",
+   "maxPriorityFeePerGas": "0x77359400",
+   "raw": "0x02f8af05028477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a07bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6a033e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3",
+   "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+   "publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d355f97070",
+   "accessList": [],
+   "chainId": "0x5",
+   "v": "0x0",
+   "r": "0x7bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6",
+   "s": "0x33e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3"
+  }],
+  "size": "0x28f",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "nonce": "0x0"
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_getBlockByHash`
+
 * `eth_getBlockByHash(hash,show_rich_tx)`
-    * `hash`: [`H256`](#type-H256) 
-    * `show_rich_tx`: [`bool`](#type-bool)
+  * `hash`: [`H256`](#type-H256)
+  * `show_rich_tx`: [`bool`](#type-bool)
 * result: [`BlockView`](#type-BlockView)
 
 Returns information about a block by hash.
@@ -297,13 +303,13 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getBlockByHash",
-	"params": [
-		"0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		true
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getBlockByHash",
+ "params": [
+  "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  true
+ ]
 }
 ```
 
@@ -311,62 +317,63 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"hash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"parentHash": "0xd619791daa02617ae2825a4ad7f2eb1379a069ac7b96b1628e75e1e654d5163c",
-		"sha3Uncles": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"author": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
-		"miner": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
-		"stateRoot": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
-		"transactionsRoot": "0x30fe4f21201c335b4501d517872d4d26bec39d350f987ee94e46e27bf7c48aae",
-		"receiptsRoot": "0x77f8178b9f5a0e4aa59ee10d3d96cacfd0d6137fd3728cc01b5e5d6d74f6813f",
-		"number": "0x1b4",
-		"gasUsed": "0xc665442",
-		"gasLimit": "0x1c9c380",
-		"extraData": "0x",
-		"logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000",
-		"timestamp": "0x62e00014",
-		"difficulty": "0x1",
-		"totalDifficulty": null,
-		"sealFields": [],
-		"baseFeePerGas": "0x539",
-		"uncles": [],
-		"transactions": [{
-			"type": "0x2",
-			"blockNumber": "0x1b4",
-			"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-			"hash": "0xde3e1e12fb3f1a5b6ca32f580f0e7f170195f7a5233eb7d7095c53d7f5c519f5",
-			"nonce": "0x2",
-			"transactionIndex": "0x1b71",
-			"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-			"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-			"value": "0x0",
-			"gas": "0x0",
-			"gasPrice": "0x77359400",
-			"maxFeePerGas": "0x539",
-			"maxPriorityFeePerGas": "0x77359400",
-			"raw": "0x02f8af05028477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a07bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6a033e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3",
-			"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-			"publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d355f97070",
-			"accessList": [],
-			"chainId": "0x5",
-			"v": "0x0",
-			"r": "0x7bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6",
-			"s": "0x33e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3"
-		}],
-		"size": "0x28f",
-		"mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"nonce": "0x0"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "hash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "parentHash": "0xd619791daa02617ae2825a4ad7f2eb1379a069ac7b96b1628e75e1e654d5163c",
+  "sha3Uncles": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "author": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
+  "miner": "0xf4cc1652dcec2e5de9ce6fb1b6f9fa9456e957f1",
+  "stateRoot": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
+  "transactionsRoot": "0x30fe4f21201c335b4501d517872d4d26bec39d350f987ee94e46e27bf7c48aae",
+  "receiptsRoot": "0x77f8178b9f5a0e4aa59ee10d3d96cacfd0d6137fd3728cc01b5e5d6d74f6813f",
+  "number": "0x1b4",
+  "gasUsed": "0xc665442",
+  "gasLimit": "0x1c9c380",
+  "extraData": "0x",
+  "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp": "0x62e00014",
+  "difficulty": "0x1",
+  "totalDifficulty": null,
+  "sealFields": [],
+  "baseFeePerGas": "0x539",
+  "uncles": [],
+  "transactions": [{
+   "type": "0x2",
+   "blockNumber": "0x1b4",
+   "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+   "hash": "0xde3e1e12fb3f1a5b6ca32f580f0e7f170195f7a5233eb7d7095c53d7f5c519f5",
+   "nonce": "0x2",
+   "transactionIndex": "0x1b71",
+   "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+   "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+   "value": "0x0",
+   "gas": "0x0",
+   "gasPrice": "0x77359400",
+   "maxFeePerGas": "0x539",
+   "maxPriorityFeePerGas": "0x77359400",
+   "raw": "0x02f8af05028477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a07bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6a033e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3",
+   "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+   "publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d355f97070",
+   "accessList": [],
+   "chainId": "0x5",
+   "v": "0x0",
+   "r": "0x7bf93b22eb0b40a85d0f8044d1b0201750ee1d8c27d558ae683509b13d8282e6",
+   "s": "0x33e17c1e2b01fed2d742a37704530cd902754d726b96d41e24b5adc7be4dcdd3"
+  }],
+  "size": "0x28f",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "nonce": "0x0"
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_getTransactionByHash`
+
 * `eth_getTransactionByHash(blockHash)`
-    * `blockHash`: [`H256`](#type-H256)
+  * `blockHash`: [`H256`](#type-H256)
 * result: [`TransactionView`](#type-TransactionView)
 
 Returns the information about a transaction requested by transaction hash.
@@ -378,20 +385,21 @@ Returns the information about a transaction requested by transaction hash.
 #### Returns
 
 Object - A transaction object, or null when no transaction was found:
-- blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
-- blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
-- from: DATA, 20 Bytes - address of the sender.
-- gas: QUANTITY - gas provided by the sender.
-- gasPrice: QUANTITY - gas price provided by the sender in Wei.
-- hash: DATA, 32 Bytes - hash of the transaction.
-- input: DATA - the data send along with the transaction. 
-- nonce: QUANTITY - the number of transactions made by the sender prior to this one. 
-- to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-- transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
-- value: QUANTITY - value transferred in Wei.
-- v: QUANTITY - ECDSA recovery id.
-- r: QUANTITY - ECDSA signature r.
-- s: QUANTITY - ECDSA signature s.
+
+* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
+* blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
+* from: DATA, 20 Bytes - address of the sender.
+* gas: QUANTITY - gas provided by the sender.
+* gasPrice: QUANTITY - gas price provided by the sender in Wei.
+* hash: DATA, 32 Bytes - hash of the transaction.
+* input: DATA - the data send along with the transaction.
+* nonce: QUANTITY - the number of transactions made by the sender prior to this one.
+* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
+* transactionIndex: QUANTITY - integer of the transactions index position in the block. null when its pending.
+* value: QUANTITY - value transferred in Wei.
+* v: QUANTITY - ECDSA recovery id.
+* r: QUANTITY - ECDSA signature r.
+* s: QUANTITY - ECDSA signature s.
 
 #### Examples
 
@@ -399,12 +407,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionByHash",
-	"params": [
-		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionByHash",
+ "params": [
+  "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+ ]
 }
 ```
 
@@ -412,38 +420,39 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"type": "0x2",
-		"blockNumber": "0x1b4",
-		"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-		"nonce": "0x1",
-		"transactionIndex": "0x1b70",
-		"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-		"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-		"value": "0x0",
-		"gas": "0x73a9",
-		"gasPrice": "0x77359400",
-		"maxFeePerGas": "0x539",
-		"maxPriorityFeePerGas": "0x77359400",
-		"raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
-		"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-		"publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d456798989",
-		"accessList": [],
-		"chainId": "0x5",
-		"v": "0x0",
-		"r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
-		"s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "type": "0x2",
+  "blockNumber": "0x1b4",
+  "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+  "nonce": "0x1",
+  "transactionIndex": "0x1b70",
+  "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+  "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+  "value": "0x0",
+  "gas": "0x73a9",
+  "gasPrice": "0x77359400",
+  "maxFeePerGas": "0x539",
+  "maxPriorityFeePerGas": "0x77359400",
+  "raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
+  "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+  "publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d456798989",
+  "accessList": [],
+  "chainId": "0x5",
+  "v": "0x0",
+  "r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
+  "s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_getBlockTransactionCountByNumber`
+
 * `eth_getBlockTransactionCountByNumber(number)`
-    * `number`: [`BlockId`](#type-BlockId)
+  * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
 
 Returns the number of transactions in a block matching the given block number.
@@ -462,12 +471,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getBlockTransactionCountByNumber",
-	"params": [
-		"0xe90"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getBlockTransactionCountByNumber",
+ "params": [
+  "0xe90"
+ ]
 }
 ```
 
@@ -475,16 +484,17 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x1bb6",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x1bb6",
+ "id": 2
 }
 
 ```
 
 ### `eth_getTransactionReceipt`
+
 * `eth_getTransactionReceipt(hash)`
-    * `hash`: [`H256`](#type-H256)
+  * `hash`: [`H256`](#type-H256)
 * result: [`Web3Receipt`](#type-Web3Receipt)
 
 Returns the receipt of a transaction by transaction hash.
@@ -498,19 +508,20 @@ Returns the receipt of a transaction by transaction hash.
 #### Returns
 
 Object - A transaction receipt object, or null when no receipt was found.
-- transactionHash : DATA, 32 Bytes - hash of the transaction.
-- transactionIndex: QUANTITY - integer of the transactions index position in the block.
-- blockHash: DATA, 32 Bytes - hash of the block where this transaction was in.
-- blockNumber: QUANTITY - block number where this transaction was in.
-- from: DATA, 20 Bytes - address of the sender.
-- to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
-- cumulativeGasUsed : QUANTITY - The total amount of gas used when this transaction was executed in the block.
-- gasUsed : QUANTITY - The amount of gas used by this specific transaction alone.
-- contractAddress : DATA, 20 Bytes - The contract address created, if the transaction was a * contract creation, otherwise null.
-- logs: Array - Array of log objects, which this transaction generated.
-- logsBloom: DATA, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs. It also returns either.
-- root : DATA 32 bytes of post-transaction stateroot (pre Byzantium).
-- status: QUANTITY either 1 (success) or 0 (failure).
+
+* transactionHash : DATA, 32 Bytes - hash of the transaction.
+* transactionIndex: QUANTITY - integer of the transactions index position in the block.
+* blockHash: DATA, 32 Bytes - hash of the block where this transaction was in.
+* blockNumber: QUANTITY - block number where this transaction was in.
+* from: DATA, 20 Bytes - address of the sender.
+* to: DATA, 20 Bytes - address of the receiver. null when its a contract creation transaction.
+* cumulativeGasUsed : QUANTITY - The total amount of gas used when this transaction was executed in the block.
+* gasUsed : QUANTITY - The amount of gas used by this specific transaction alone.
+* contractAddress : DATA, 20 Bytes - The contract address created, if the transaction was a * contract creation, otherwise null.
+* logs: Array - Array of log objects, which this transaction generated.
+* logsBloom: DATA, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs. It also returns either.
+* root : DATA 32 bytes of post-transaction stateroot (pre Byzantium).
+* status: QUANTITY either 1 (success) or 0 (failure).
 
 #### Examples
 
@@ -518,12 +529,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionReceipt",
-	"params": [
-		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionReceipt",
+ "params": [
+  "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+ ]
 }
 ```
 
@@ -531,44 +542,45 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"blockNumber": "0x1b4",
-		"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"contractAddress": null,
-		"cumulativeGasUsed": "0x73a9",
-		"effectiveGasPrice": "0x73a9",
-		"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-		"gasUsed": "0x73a9",
-		"logs": [{
-			"address": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-			"topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x00000000000000000000000092df69a492c93d22c90247434b8d80944daa38fa", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
-			"data": "0x0000000000000000000000000000000000000000000000000000000000000000",
-			"blockNumber": "0x1b4",
-			"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-			"transactionHash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-			"transactionIndex": "0x1b70",
-			"logIndex": "0x0",
-			"removed": false
-		}],
-		"logsBloom": "0x20000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000002008000000000000000000000000000000002000000000000000008000000000000000000040000000004000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000",
-		"root": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
-		"status": "0x1",
-		"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-		"transactionHash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-		"transactionIndex": "0x1b70",
-		"type": "0x2"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "blockNumber": "0x1b4",
+  "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "contractAddress": null,
+  "cumulativeGasUsed": "0x73a9",
+  "effectiveGasPrice": "0x73a9",
+  "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+  "gasUsed": "0x73a9",
+  "logs": [{
+   "address": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+   "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x00000000000000000000000092df69a492c93d22c90247434b8d80944daa38fa", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
+   "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+   "blockNumber": "0x1b4",
+   "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+   "transactionHash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+   "transactionIndex": "0x1b70",
+   "logIndex": "0x0",
+   "removed": false
+  }],
+  "logsBloom": "0x20000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000002008000000000000000000000000000000002000000000000000008000000000000000000040000000004000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000",
+  "root": "0xbd8e37758ba2c1d73f0c1dc3ea255f5b7c037f0e8e1ee9feb012461d58be236d",
+  "status": "0x1",
+  "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+  "transactionHash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+  "transactionIndex": "0x1b70",
+  "type": "0x2"
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_feeHistory`
+
 * `eth_feeHistory(block_count,newest_block,reward_percentiles)`
-    * `block_count`: [`U256`](#type-U256)
-	* `newest_block`: [`BlockId`](#type-BlockId)
-	* `reward_percentiles`: `Array<`[`f64`](#type-f64)`>`
+  * `block_count`: [`U256`](#type-U256)
+  * `newest_block`: [`BlockId`](#type-BlockId)
+  * `reward_percentiles`: `Array<`[`f64`](#type-f64)`>`
 * result: [`Web3FeeHistory`](#type-Web3FeeHistory)
 
 Returns base fee per gas and transaction effective priority fee per gas history for the requested block range if available. The range between headBlock-4 and headBlock is guaranteed to be available while retrieving data from the pending block and older history are optional to support. For pre-EIP-1559 blocks, the gas prices are returned as rewards and zeroes are returned for the base fee per gas.
@@ -581,6 +593,7 @@ blockCount and newest Block are both required parameters.
 * `reward_percentiles` -  (optional) A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
 
 #### Returns
+
 * oldestBlock - Lowest number block of the returned range expressed as a hexidecimal number.
 * baseFeePerGas - An array of block base fees per gas. This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.
 * gasUsedRatio - An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit.
@@ -592,13 +605,13 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionReceipt",
-	"params": [
-		"0x8",
-		"0x1b4"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionReceipt",
+ "params": [
+  "0x8",
+  "0x1b4"
+ ]
 }
 ```
 
@@ -606,22 +619,23 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"oldestBlock": "0x0",
-		"reward": null,
-		"baseFeePerGas": [],
-		"gasUsedRatio": []
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "oldestBlock": "0x0",
+  "reward": null,
+  "baseFeePerGas": [],
+  "gasUsedRatio": []
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_getBlockTransactionCountByHash`
+
 * `eth_getBlockTransactionCountByHash(hash)`
-    * `hash`: [`Hash`](#type-Hash)
-* result: [`U256`](#type-U256) 
+  * `hash`: [`Hash`](#type-Hash)
+* result: [`U256`](#type-U256)
 
 Returns the number of transactions in a block from a block matching the given block hash.
 
@@ -639,12 +653,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getBlockTransactionCountByHash",
-	"params": [
-		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getBlockTransactionCountByHash",
+ "params": [
+  "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65"
+ ]
 }
 ```
 
@@ -652,18 +666,19 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x1b72",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x1b72",
+ "id": 2
 }
 
 ```
 
 ### `eth_getTransactionByBlockHashAndIndex`
+
 * `eth_getTransactionByBlockHashAndIndex(hash,position)`
-    * `hash`: [`Hash`](#type-Hash)
-	* `position`: [`U256`](#type-U256)
-* result: [`TransactionView`](#type-TransactionView) 
+  * `hash`: [`Hash`](#type-Hash)
+  * `position`: [`U256`](#type-U256)
+* result: [`TransactionView`](#type-TransactionView)
 
 Returns information about a transaction by block hash and transaction index position.
 
@@ -675,6 +690,7 @@ Returns information about a transaction by block hash and transaction index posi
 #### Returns
 
 Object - A transaction object, or null when no transaction was found:
+
 * blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
 * blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
 * from: DATA, 20 Bytes - address of the sender.
@@ -696,13 +712,13 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionByBlockHashAndIndex",
-	"params": [
-		"0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-		"0x8"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionByBlockHashAndIndex",
+ "params": [
+  "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+  "0x8"
+ ]
 }
 ```
 
@@ -710,40 +726,41 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"type": "0x2",
-		"blockNumber": "0x1b4",
-		"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"hash": "0x0f7c17ba06dcb8106dd6956bfdb131cd48cfeaf2dfa21b4f16384d0a872441a2",
-		"nonce": "0x8",
-		"transactionIndex": "0x8",
-		"from": "0xae32a32bdad774608ab473d7ca1993e9921b6a7a",
-		"to": "0x057ef64e23666f000b34ae31332854acbd1c8544",
-		"value": "0x0",
-		"gas": "0x73a9",
-		"gasPrice": "0x77359400",
-		"maxFeePerGas": "0x539",
-		"maxPriorityFeePerGas": "0x77359400",
-		"raw": "0x02f8af05088477359400847735940082ea6094057ef64e23666f000b34ae31332854acbd1c854480b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0bd71f0ff2689b002dd58512713d91321266f23dcb0900e2b20f33e2be2222627a051f87230181b70d4736f907defbe505b2a3048e50113881c2254814c3f4ccb47",
-		"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-		"publicKey": "0x5651add842f3f79235ca3958f6fafa300d9c54b0632d9bbfb5d8eb926caabdf08a78e3492537223efb295324aae4080348c86bffaa4235867f10766f12345678",
-		"accessList": [],
-		"chainId": "0x5",
-		"v": "0x0",
-		"r": "0xbd71f0ff2689b002dd58512713d91321266f23dcb0900e2b20f33e2be2222627",
-		"s": "0x51f87230181b70d4736f907defbe505b2a3048e50113881c2254814c3f4ccb47"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "type": "0x2",
+  "blockNumber": "0x1b4",
+  "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "hash": "0x0f7c17ba06dcb8106dd6956bfdb131cd48cfeaf2dfa21b4f16384d0a872441a2",
+  "nonce": "0x8",
+  "transactionIndex": "0x8",
+  "from": "0xae32a32bdad774608ab473d7ca1993e9921b6a7a",
+  "to": "0x057ef64e23666f000b34ae31332854acbd1c8544",
+  "value": "0x0",
+  "gas": "0x73a9",
+  "gasPrice": "0x77359400",
+  "maxFeePerGas": "0x539",
+  "maxPriorityFeePerGas": "0x77359400",
+  "raw": "0x02f8af05088477359400847735940082ea6094057ef64e23666f000b34ae31332854acbd1c854480b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0bd71f0ff2689b002dd58512713d91321266f23dcb0900e2b20f33e2be2222627a051f87230181b70d4736f907defbe505b2a3048e50113881c2254814c3f4ccb47",
+  "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+  "publicKey": "0x5651add842f3f79235ca3958f6fafa300d9c54b0632d9bbfb5d8eb926caabdf08a78e3492537223efb295324aae4080348c86bffaa4235867f10766f12345678",
+  "accessList": [],
+  "chainId": "0x5",
+  "v": "0x0",
+  "r": "0xbd71f0ff2689b002dd58512713d91321266f23dcb0900e2b20f33e2be2222627",
+  "s": "0x51f87230181b70d4736f907defbe505b2a3048e50113881c2254814c3f4ccb47"
+ },
+ "id": 2
 }
 
 ```
 
 ### `eth_getTransactionByBlockNumberAndIndex`
+
 * `eth_getTransactionByBlockNumberAndIndex(number,position)`
-    * `number`: [`BlockId`](#type-BlockId)
-	* `position`: [`U256`](#type-U256)
-* result: [`TransactionView`](#type-TransactionView) 
+  * `number`: [`BlockId`](#type-BlockId)
+  * `position`: [`U256`](#type-U256)
+* result: [`TransactionView`](#type-TransactionView)
 
 Returns information about a transaction by block number and transaction index position.
 
@@ -755,6 +772,7 @@ Returns information about a transaction by block number and transaction index po
 #### Returns
 
 Object - A transaction object, or null when no transaction was found:
+
 * blockHash: DATA, 32 Bytes - hash of the block where this transaction was in. null when its pending.
 * blockNumber: QUANTITY - block number where this transaction was in. null when its pending.
 * from: DATA, 20 Bytes - address of the sender.
@@ -776,13 +794,13 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionByBlockNumberAndIndex",
-	"params": [
-		"0xb14",
-		"0x8"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionByBlockNumberAndIndex",
+ "params": [
+  "0xb14",
+  "0x8"
+ ]
 }
 ```
 
@@ -790,31 +808,31 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"type": "0x2",
-		"blockNumber": "0xb14",
-		"blockHash": "0xcaca33a66b32c99d157af1a9f1940c878e37dab6a95c0496a44852c91218658a",
-		"hash": "0x401ee5194c6628800c3437618fe47645d065fae5dcf43c540ebe7d76aa7d4be0",
-		"nonce": "0x123",
-		"transactionIndex": "0x8",
-		"from": "0x12247217ada7661c30a92425b62c756f54bfb5fc",
-		"to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
-		"value": "0x0",
-		"gas": "0x73a9",
-		"gasPrice": "0x77359400",
-		"maxFeePerGas": "0x539",
-		"maxPriorityFeePerGas": "0x77359400",
-		"raw": "0x02f8b1058201238477359400847735940082ea60945fbdb2315678afecb367f032d93f642f64180aa380b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0df97bdb5395f8a6a78133ea75b2dfa1fe0edd54710efe1af5766478b472b2719a036d810b450963968711e03c7b7032a1ca9d4cd5f507dbcd6a5299ab46042871d",
-		"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-		"publicKey": "0x5d29609b19fc299039853e319d7be4a153c4c464beca159bef943bef4d50c6fc1180058d25a56d824a32725040d394bb4251c935e834ae2bc7174361fff4dc86",
-		"accessList": [],
-		"chainId": "0x5",
-		"v": "0x0",
-		"r": "0xdf97bdb5395f8a6a78133ea75b2dfa1fe0edd54710efe1af5766478b472b2719",
-		"s": "0x36d810b450963968711e03c7b7032a1ca9d4cd5f507dbcd6a5299ab46042871d"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "type": "0x2",
+  "blockNumber": "0xb14",
+  "blockHash": "0xcaca33a66b32c99d157af1a9f1940c878e37dab6a95c0496a44852c91218658a",
+  "hash": "0x401ee5194c6628800c3437618fe47645d065fae5dcf43c540ebe7d76aa7d4be0",
+  "nonce": "0x123",
+  "transactionIndex": "0x8",
+  "from": "0x12247217ada7661c30a92425b62c756f54bfb5fc",
+  "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "value": "0x0",
+  "gas": "0x73a9",
+  "gasPrice": "0x77359400",
+  "maxFeePerGas": "0x539",
+  "maxPriorityFeePerGas": "0x77359400",
+  "raw": "0x02f8b1058201238477359400847735940082ea60945fbdb2315678afecb367f032d93f642f64180aa380b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0df97bdb5395f8a6a78133ea75b2dfa1fe0edd54710efe1af5766478b472b2719a036d810b450963968711e03c7b7032a1ca9d4cd5f507dbcd6a5299ab46042871d",
+  "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+  "publicKey": "0x5d29609b19fc299039853e319d7be4a153c4c464beca159bef943bef4d50c6fc1180058d25a56d824a32725040d394bb4251c935e834ae2bc7174361fff4dc86",
+  "accessList": [],
+  "chainId": "0x5",
+  "v": "0x0",
+  "r": "0xdf97bdb5395f8a6a78133ea75b2dfa1fe0edd54710efe1af5766478b472b2719",
+  "s": "0x36d810b450963968711e03c7b7032a1ca9d4cd5f507dbcd6a5299ab46042871d"
+ },
+ "id": 2
 }
 
 ```
@@ -824,9 +842,10 @@ Response
 State methods report the current state of all the data stored. The "state" is like one big shared piece of RAM, and includes account balances, contract data, and gas estimations.
 
 ### `eth_getTransactionCount`
+
 * `eth_getTransactionCount(address,number)`
-    * `address`: [`H160`](#type-H160)
-    * `number`: [`BlockId`](#type-BlockId)
+  * `address`: [`H160`](#type-H160)
+  * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
 
 Returns the number of transactions sent from an address.
@@ -846,12 +865,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getTransactionCount",
-	"params": [
-		"0x92df69a492c93d22c90247434b8d80944daa38fa"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getTransactionCount",
+ "params": [
+  "0x92df69a492c93d22c90247434b8d80944daa38fa"
+ ]
 }
 ```
 
@@ -859,25 +878,26 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x12c",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x12c",
+ "id": 2
 }
 
 ```
 
 ### `eth_getBalance`
+
 * `eth_getBalance(address,number)`
-    * `address`: [`H160`](#type-H160)
-    * `number`: [`BlockId`](#type-BlockId)
+  * `address`: [`H160`](#type-H160)
+  * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
 
 Returns the balance of the account of given address.
 
 #### Params
 
-*   `address` - 20 Bytes - address to check for balance.
-*   `block_number` - A block number.
+* `address` - 20 Bytes - address to check for balance.
+* `block_number` - A block number.
 
 #### Returns
 
@@ -889,12 +909,12 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_getBalance",
-	"params": [
-		"0x92df69a492c93d22c90247434b8d80944daa38fa"
-	]
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_getBalance",
+ "params": [
+  "0x92df69a492c93d22c90247434b8d80944daa38fa"
+ ]
 }
 ```
 
@@ -902,14 +922,15 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x8459515c8443cde72e000",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x8459515c8443cde72e000",
+ "id": 2
 }
 
 ```
 
 ### `eth_chainId`
+
 * `eth_chainId()`
 * result: [`U256`](#type-U256)
 
@@ -917,7 +938,7 @@ Returns the chain id of axon network.
 
 #### Params
 
-*  None
+* None
 
 #### Returns
 
@@ -929,10 +950,10 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "eth_chainId",
-	"params": []
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "eth_chainId",
+ "params": []
 }
 ```
 
@@ -940,13 +961,15 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x5",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x5",
+ "id": 2
 }
 
 ```
+
 ### `net_version`
+
 * `net_version()`
 * result: [`U256`](#type-U256)
 
@@ -954,7 +977,7 @@ Returns the current network id.
 
 #### Params
 
-*  None
+* None
 
 #### Returns
 
@@ -966,10 +989,10 @@ Request
 
 ```json
 {
-	"id": 1,
-	"jsonrpc": "2.0",
-	"method": "net_version",
-	"params": []
+ "id": 1,
+ "jsonrpc": "2.0",
+ "method": "net_version",
+ "params": []
 }
 ```
 
@@ -977,16 +1000,18 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x5",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x5",
+ "id": 2
 }
 
 ```
+
 ### `eth_call`
+
 * `eth_call(req,number)`
-    * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
-	* `number`: [`BlockId`](#type-BlockId)
+  * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
+  * `number`: [`BlockId`](#type-BlockId)
 * result: [`Hex`](#type-Hex)
 
 Executes a new message call immediately without creating a transaction on the block chain.
@@ -994,12 +1019,12 @@ Executes a new message call immediately without creating a transaction on the bl
 #### Params
 
 * `req` - The transaction call object
-	* from: DATA, 20 Bytes - (optional) The address the transaction is sent from.
-	* to: DATA, 20 Bytes - The address the transaction is directed to.
-	* gas: QUANTITY - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-	* gasPrice: QUANTITY - (optional) Integer of the gasPrice used for each paid gas
-	* value: QUANTITY - (optional) Integer of the value sent with this transaction
-	* data: DATA - (optional) Hash of the method signature and encoded parameters.
+  * from: DATA, 20 Bytes - (optional) The address the transaction is sent from.
+  * to: DATA, 20 Bytes - The address the transaction is directed to.
+  * gas: QUANTITY - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+  * gasPrice: QUANTITY - (optional) Integer of the gasPrice used for each paid gas
+  * value: QUANTITY - (optional) Integer of the value sent with this transaction
+  * data: DATA - (optional) Hash of the method signature and encoded parameters.
 * `number` - A block number.
 
 #### Returns
@@ -1012,12 +1037,12 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_call",
-	"params": [{
-		see above
-	}],
-	"id": 1
+ "jsonrpc": "2.0",
+ "method": "eth_call",
+ "params": [{
+  see above
+ }],
+ "id": 1
 }
 ```
 
@@ -1025,17 +1050,19 @@ Response
 
 ```json
 {
-	"id":1,
-	"jsonrpc": "2.0",
-	"result": "0x"
+ "id":1,
+ "jsonrpc": "2.0",
+ "result": "0x"
 }
 
 ```
+
 ### `eth_estimateGas`
+
 * `eth_estimateGas(req,number)`
-    * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
-	* `number`: [`BlockId`](#type-BlockId)
-* result: [`U256`](#type-U256) 
+  * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
+  * `number`: [`BlockId`](#type-BlockId)
+* result: [`U256`](#type-U256)
 
 Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.
 
@@ -1043,12 +1070,12 @@ Generates and returns an estimate of how much gas is necessary to allow the tran
 
 * `req` - The transaction call object. Expect all properties are optional. If no gas limit is specified geth uses the block gas limit from the pending block as an upper bound. As a result the returned estimate might not be enough to executed the call/transaction when the amount of gas is higher than the pending block gas limit.
 
-	* from: DATA, 20 Bytes - (optional) The address the transaction is sent from.
-	* to: DATA, 20 Bytes - The address the transaction is directed to.
-	* gas: QUANTITY - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-	* gasPrice: QUANTITY - (optional) Integer of the gasPrice used for each paid gas
-	* value: QUANTITY - (optional) Integer of the value sent with this transaction
-	* data: DATA - (optional) Hash of the method signature and encoded parameters.
+  * from: DATA, 20 Bytes - (optional) The address the transaction is sent from.
+  * to: DATA, 20 Bytes - The address the transaction is directed to.
+  * gas: QUANTITY - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+  * gasPrice: QUANTITY - (optional) Integer of the gasPrice used for each paid gas
+  * value: QUANTITY - (optional) Integer of the value sent with this transaction
+  * data: DATA - (optional) Hash of the method signature and encoded parameters.
 * `number` - A block number.
 
 #### Returns
@@ -1061,12 +1088,12 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_call",
-	"params": [{
-		see above
-	}],
-	"id": 1
+ "jsonrpc": "2.0",
+ "method": "eth_call",
+ "params": [{
+  see above
+ }],
+ "id": 1
 }
 ```
 
@@ -1074,16 +1101,18 @@ Response
 
 ```json
 {
-	"id":1,
-	"jsonrpc": "2.0",
-	"result": "0x5208" // 21000
+ "id":1,
+ "jsonrpc": "2.0",
+ "result": "0x5208" // 21000
 }
 
 ```
+
 ### `eth_getCode`
+
 * `eth_getCode(address,block_number)`
-    * `address`: [`H160`](#type-H160)
-	* `block_number`: [`BlockId`](#type-BlockId)
+  * `address`: [`H160`](#type-H160)
+  * `block_number`: [`BlockId`](#type-BlockId)
 * result: [`Hex`](#type-Hex)
 
 Returns code at a given address.
@@ -1103,13 +1132,13 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_getCode",
-	"params": [{
-	"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+ "jsonrpc": "2.0",
+ "method": "eth_getCode",
+ "params": [{
+ "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
     "0x2",
-	}],
-	"id": 1
+ }],
+ "id": 1
 }
 ```
 
@@ -1117,16 +1146,17 @@ Response
 
 ```json
 {
-	"id":1,
-	"jsonrpc": "2.0",
-	"result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
+ "id":1,
+ "jsonrpc": "2.0",
+ "result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
 }
 
 ```
 
 ### `eth_gasPrice`
+
 * `eth_gasPrice()`
-    
+
 * result: [`U256`](#type-U256)
 
 Returns the current price per gas in Wei.
@@ -1145,10 +1175,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_gasPrice",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "eth_gasPrice",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1156,15 +1186,16 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x8",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x8",
+ "id": 2
 }
 ```
 
 ### `net_listening`
+
 * `net_listening()`
-    
+
 * result: [`bool`](#type-bool)
 
 Returns true if client is actively listening for network connections. Always return `true` in Axon network.
@@ -1183,10 +1214,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "net_listening",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "net_listening",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1194,17 +1225,19 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": true,
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": true,
+ "id": 2
 }
 ```
+
 ### `eth_mining`
+
 * `eth_mining()`
-    
+
 * result: [`bool`](#type-bool)
 
-Returns true if client is actively mining new blocks. 
+Returns true if client is actively mining new blocks.
 
 *Note:* Always return `false` in Axon network.
 
@@ -1222,10 +1255,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_mining",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "eth_mining",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1233,15 +1266,16 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": false,
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": false,
+ "id": 2
 }
 ```
 
 ### `net_peerCount`
+
 * `net_peerCount()`
-    
+
 * result: [`U256`](#type-U256)
 
 Returns number of peers currently connected to the client.
@@ -1260,10 +1294,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "net_peerCount",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "net_peerCount",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1271,18 +1305,19 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x7",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x7",
+ "id": 2
 }
 ```
 
 ### `eth_syncing`
+
 * `eth_syncing()`
-    
+
 * result: [`Web3SyncStatus`](#type-Web3SyncStatus) `|` `false`
 
-Returns an object with data about the sync status or `false`. 
+Returns an object with data about the sync status or `false`.
 
 #### Params
 
@@ -1291,6 +1326,7 @@ Returns an object with data about the sync status or `false`.
 #### Returns
 
 Object | Boolean, An object with sync status data or FALSE, when not syncing:
+
 * startingBlock: QUANTITY - The block at which the import started (will only be reset, after the sync reached his head).
 * currentBlock: QUANTITY - The current block, same as `eth_blockNumber`.
 * highestBlock: QUANTITY - The estimated highest block.
@@ -1301,10 +1337,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "net_peerCount",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "net_peerCount",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1312,29 +1348,31 @@ Response
 
 ```json
 {
-	"id":1,
-	"jsonrpc": "2.0",
-	"result": {
-		startingBlock: '0x384',
-		currentBlock: '0x386',
-		highestBlock: '0x454'
-	}
+ "id":1,
+ "jsonrpc": "2.0",
+ "result": {
+  startingBlock: '0x384',
+  currentBlock: '0x386',
+  highestBlock: '0x454'
+ }
 }
 ```
 
 Or when not syncing
+
 ```json
 {
-	"id":1,
-	"jsonrpc": "2.0",
-	"result": false
+ "id":1,
+ "jsonrpc": "2.0",
+ "result": false
 }
 
 ```
 
 ### `eth_getLogs`
+
 * `eth_getLogs(filter)`
-    * `filter`: [`Web3Filter`](#type-Web3Filter)
+  * `filter`: [`Web3Filter`](#type-Web3Filter)
 * result: `Arrary`[`Web3Log`](#type-Web3Log)
 
 Returns an array of all logs matching a given filter object.
@@ -1342,16 +1380,15 @@ Returns an array of all logs matching a given filter object.
 #### Params
 
 * Object - The filter options:
-    * fromBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-    * toBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-    * address: DATA|Array, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
-    * topics: Array of DATA, - (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-    * blockhash: DATA, 32 Bytes - (optional, future) With the addition of EIP-234, blockHash will be a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. If blockHash is present in in the filter criteria, then neither fromBlock nor toBlock are allowed.
+  * fromBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+  * toBlock: QUANTITY|TAG - (optional, default: "latest") Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+  * address: DATA|Array, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
+  * topics: Array of DATA, - (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
+  * blockhash: DATA, 32 Bytes - (optional, future) With the addition of EIP-234, blockHash will be a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. If blockHash is present in in the filter criteria, then neither fromBlock nor toBlock are allowed.
 
 #### Returns
 
 Object An object with web3 log data. See [`Web3Log`](#type-Web3Log).
-	
 
 #### Examples
 
@@ -1359,16 +1396,16 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_getLogs",
-	"params": [
-		{
+ "jsonrpc": "2.0",
+ "method": "eth_getLogs",
+ "params": [
+  {
     topics: [
       "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
     ],
   },
-	],
-	"id": 2
+ ],
+ "id": 2
 }
 ```
 
@@ -1376,35 +1413,36 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": [{
-		"address": "0xf44bb5018bfa4a65165595f5e41f4c7456cd3575",
-		"topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x000000000000000000000000f44bb5018bfa4a65165595f5e41f4c7456cd3575", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
-		"data": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"blockHash": "0xfbda8b37d5d004653dc18623db2467836b64b24d4880ba4e49ba18a1668f440e",
-		"blockNumber": "0x5d54",
-		"transactionHash": "0x12f6f4c0cbf388f87ef3d54e8e9a4988746edd9cf773895997cd355f74e2f635",
-		"transactionIndex": "0x0",
-		"logIndex": "0x0",
-		"removed": false
-	}, {
-		"address": "0xf44bb5018bfa4a65165595f5e41f4c7456cd3575",
-		"topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x000000000000000000000000f44bb5018bfa4a65165595f5e41f4c7456cd3575", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
-		"data": "0x0000000000000000000000000000000000000000000000000000000000000000",
-		"blockHash": "0xfbda8b37d5d004653dc18623db2467836b64b24d4880ba4e49ba18a1668f440e",
-		"blockNumber": "0x5d54",
-		"transactionHash": "0x5829bfbd0a1752441c5eaca366506757684b99071402448c39c9ae8c1f48b104",
-		"transactionIndex": "0x1",
-		"logIndex": "0x0",
-		"removed": false
-	}],
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": [{
+  "address": "0xf44bb5018bfa4a65165595f5e41f4c7456cd3575",
+  "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x000000000000000000000000f44bb5018bfa4a65165595f5e41f4c7456cd3575", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
+  "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "blockHash": "0xfbda8b37d5d004653dc18623db2467836b64b24d4880ba4e49ba18a1668f440e",
+  "blockNumber": "0x5d54",
+  "transactionHash": "0x12f6f4c0cbf388f87ef3d54e8e9a4988746edd9cf773895997cd355f74e2f635",
+  "transactionIndex": "0x0",
+  "logIndex": "0x0",
+  "removed": false
+ }, {
+  "address": "0xf44bb5018bfa4a65165595f5e41f4c7456cd3575",
+  "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", "0x000000000000000000000000f44bb5018bfa4a65165595f5e41f4c7456cd3575", "0x0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e8915"],
+  "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "blockHash": "0xfbda8b37d5d004653dc18623db2467836b64b24d4880ba4e49ba18a1668f440e",
+  "blockNumber": "0x5d54",
+  "transactionHash": "0x5829bfbd0a1752441c5eaca366506757684b99071402448c39c9ae8c1f48b104",
+  "transactionIndex": "0x1",
+  "logIndex": "0x0",
+  "removed": false
+ }],
+ "id": 2
 }
 ```
 
 ### `web3_clientVersion`
+
 * `web3_clientVersion()`  
-* result: [`String`](#type-String) 
+* result: [`String`](#type-String)
 
 Returns the current client version.
 
@@ -1422,10 +1460,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "web3_clientVersion",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "web3_clientVersion",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1433,13 +1471,15 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0.1.0",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0.1.0",
+ "id": 2
 }
 ```
+
 ### `eth_accounts`
-* `eth_accounts()`   
+
+* `eth_accounts()`
 * result: `Array` `<` [`Hex`](#type-Hex) `>`
 
 Returns a list of addresses owned by client.
@@ -1458,10 +1498,10 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_accounts",
-	"params": [],
-	"id": 2
+ "jsonrpc": "2.0",
+ "method": "eth_accounts",
+ "params": [],
+ "id": 2
 }
 ```
 
@@ -1476,8 +1516,9 @@ Response
 ```
 
 ### `web3_sha3`
+
 * `web3_sha3(data)`
-    * `data`: [`Hex`](#type-Hex)
+  * `data`: [`Hex`](#type-Hex)
 * result: [`Hash`](#type-Hash)
 
 Returns Keccak-256 (not the standardized SHA3-256) of the given data.
@@ -1496,10 +1537,10 @@ Request
 
 ```
 {
-	"jsonrpc": "2.0",
-	"method": "web3_sha3",
-	"params": ["0x68656c6c6f20776f726c64"],
-	"id": 64
+ "jsonrpc": "2.0",
+ "method": "web3_sha3",
+ "params": ["0x68656c6c6f20776f726c64"],
+ "id": 64
 }
 ```
 
@@ -1507,19 +1548,20 @@ Response
 
 ```
 {
-	"jsonrpc": "2.0",
-	"result": "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad",
+ "id": 2
 }
 
 ```
 
 ### `eth_getStorageAt`
+
 * `eth_getStorageAt(address,position,number)`
-    * `address`: [`H160`](#type-H160)
-    * `position`: [`U256`](#type-U256)
-    * `number`: [`BlockId`](#type-BlockId)
-* result: [`Hex`](#type-Hex) 
+  * `address`: [`H160`](#type-H160)
+  * `position`: [`U256`](#type-U256)
+  * `number`: [`BlockId`](#type-BlockId)
+* result: [`Hex`](#type-Hex)
 
 Returns the value from a storage position at a given address.
 
@@ -1539,14 +1581,14 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "web3_sha3",
-	"params": [
-	 "0x295a70b2de5e3953354a6a8344e616ed314d7251", 
+ "jsonrpc": "2.0",
+ "method": "web3_sha3",
+ "params": [
+  "0x295a70b2de5e3953354a6a8344e616ed314d7251", 
      "0x0",
      "latest"
-	],
-	"id": 64
+ ],
+ "id": 64
 }
 ```
 
@@ -1554,22 +1596,24 @@ Response
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": "0x0000000000000000000000000000000000000000000000000000000000000000",
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": "0x0000000000000000000000000000000000000000000000000000000000000000",
+ "id": 2
 }
 
 ```
 
 ### `eth_coinbase`
+
 * `eth_coinbase()`
-* result: [`H160`](#type-H160) 
+* result: [`H160`](#type-H160)
 
 Returns the client coinbase address.
 
 #### Params
 
 * None
+
 #### Returns
 
   DATA, 20 bytes - the current coinbase address.
@@ -1580,11 +1624,11 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_coinbase",
-	"params": [
-	],
-	"id": 64
+ "jsonrpc": "2.0",
+ "method": "eth_coinbase",
+ "params": [
+ ],
+ "id": 64
 }
 ```
 
@@ -1592,16 +1636,17 @@ Response
 
 ```json
 {
-	"id":64,
-	"jsonrpc": "2.0",
-	"result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
+ "id":64,
+ "jsonrpc": "2.0",
+ "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
 }
 
 ```
 
 ### `eth_hashrate`
+
 * `eth_hashrate()`
-* result: [`U256`](#type-U256) 
+* result: [`U256`](#type-U256)
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -1609,7 +1654,8 @@ Returns the number of hashes per second that the node is mining with.
 
 #### Params
 
-*  None
+* None
+
 #### Returns
 
 QUANTITY - number of hashes per second.
@@ -1620,11 +1666,11 @@ Request
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"method": "eth_hashrate",
-	"params": [
-	],
-	"id": 64
+ "jsonrpc": "2.0",
+ "method": "eth_hashrate",
+ "params": [
+ ],
+ "id": 64
 }
 ```
 
@@ -1632,9 +1678,9 @@ Response
 
 ```json
 {
-	"id":64,
-	"jsonrpc": "2.0",
-	"result": "0x38a"
+ "id":64,
+ "jsonrpc": "2.0",
+ "result": "0x38a"
 }
 
 ```
@@ -1753,56 +1799,56 @@ The TransactionView objects.
 
 `TransactionView` is a JSON object with the following fields.
 
-*   `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
-*   `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
-*   `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
-*   `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
-*   `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
-*   `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
-*   `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
-*   `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
-*   `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
-*   `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
-*   `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
-*   `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
-*   `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form.
-*   `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
-*   `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
-*   `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-*   `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
-*   `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
-*   `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
-*   `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
+* `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is 0x0, Eip2930  is 0x1 and Eip1559  is 0x2.
+* `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
+* `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
+* `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
+* `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
+* `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
+* `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
+* `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
+* `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
+* `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
+* `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
+* `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
+* `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form.
+* `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
+* `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
+* `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
+* `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
+* `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
+* `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
+* `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
 
 #### Examples
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"type": "0x2",
-		"blockNumber": "0x1b4",
-		"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-		"nonce": "0x1",
-		"transactionIndex": "0x1b70",
-		"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-		"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-		"value": "0x0",
-		"gas": "0x73a9",
-		"gasPrice": "0x77359400",
-		"maxFeePerGas": "0x539",
-		"maxPriorityFeePerGas": "0x77359400",
-		"raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
-		"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-		"publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d312345678",
-		"accessList": [],
-		"chainId": "0x5",
-		"v": "0x0",
-		"r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
-		"s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "type": "0x2",
+  "blockNumber": "0x1b4",
+  "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+  "nonce": "0x1",
+  "transactionIndex": "0x1b70",
+  "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+  "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+  "value": "0x0",
+  "gas": "0x73a9",
+  "gasPrice": "0x77359400",
+  "maxFeePerGas": "0x539",
+  "maxPriorityFeePerGas": "0x77359400",
+  "raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
+  "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+  "publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d312345678",
+  "accessList": [],
+  "chainId": "0x5",
+  "v": "0x0",
+  "r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
+  "s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
+ },
+ "id": 2
 }
 ```
 
@@ -1814,28 +1860,28 @@ The BlockView objects.
 
 `BlockView` is a JSON object with the following fields.
 
-*   `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
-*   `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
-*   `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
-*   `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
-*   `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-*   `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
-*   `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
-*   `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
-*   `number`: [`U256`](#type-U256)  - QUANTITY - the block number. null when its pending block.
-*   `gas_used`: [`U256`](#type-U256)  - QUANTITY - the total used gas by all transactions in this block.
-*   `gas_limit`: [`U256`](#type-U256)  - QUANTITY - the maximum gas allowed in this block.
-*   `extra_data`: [`Hex`](#type-Hex)  - DATA - the "extra data" field of this block.
-*   `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-*   `timestamp`: [`U256`](#type-U256)  - QUANTITY - the unix timestamp for when the block was collated.
-*   `difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the difficulty for this block.
-*   `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
-*   `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
-*   `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
-*   `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
-*   `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
-*   `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes -  a unique identifier for that block.
-*   `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
+* `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
+* `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
+* `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
+* `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
+* `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
+* `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
+* `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
+* `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
+* `number`: [`U256`](#type-U256)  - QUANTITY - the block number. null when its pending block.
+* `gas_used`: [`U256`](#type-U256)  - QUANTITY - the total used gas by all transactions in this block.
+* `gas_limit`: [`U256`](#type-U256)  - QUANTITY - the maximum gas allowed in this block.
+* `extra_data`: [`Hex`](#type-Hex)  - DATA - the "extra data" field of this block.
+* `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
+* `timestamp`: [`U256`](#type-U256)  - QUANTITY - the unix timestamp for when the block was collated.
+* `difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the difficulty for this block.
+* `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
+* `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
+* `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
+* `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
+* `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
+* `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes -  a unique identifier for that block.
+* `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
 
 ### `Web3Filter`
 
@@ -1845,15 +1891,15 @@ The Web3Filter objects.
 
 `Web3Filter` is a JSON object with the following fields.
 
-*   `from_block`: [`BlockId`](#type-BlockId) - [optional, default is "latest"], hexadecimal block number, or the string "latest", "earliest" or "pending"
-*   `to_block`:  [`BlockId`](#type-BlockId) - [optional, default is "latest"] ,
-	hexadecimal block number, or the string "latest", "earliest" or "pending"
+* `from_block`: [`BlockId`](#type-BlockId) - [optional, default is "latest"], hexadecimal block number, or the string "latest", "earliest" or "pending"
+* `to_block`:  [`BlockId`](#type-BlockId) - [optional, default is "latest"] ,
+ hexadecimal block number, or the string "latest", "earliest" or "pending"
 
-*   `block_hash`: [`H256`](#type-H256) - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash. 
+* `block_hash`: [`H256`](#type-H256) - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash.
 
-*   `address`: [`H256`](#type-H256)  - [optional] - a string representing the address (20 bytes) to check for balance. Null when its pending. Null when its pending log.
+* `address`: [`H256`](#type-H256)  - [optional] - a string representing the address (20 bytes) to check for balance. Null when its pending. Null when its pending log.
 
-*   `topics`: `Array<`[`Hash`](#type-Hash)`>` - [optional] - Array of 32 Bytes DATA topics. Topics are order-dependent.
+* `topics`: `Array<`[`Hash`](#type-Hash)`>` - [optional] - Array of 32 Bytes DATA topics. Topics are order-dependent.
 
 ### `AccessList`
 
@@ -1863,7 +1909,7 @@ The AccessList objects.
 
 `AccessList` is a JSON object with the following fields.
 
-*   `AccessList`: `Arrar<`[`AccessListItem`]`>`(#type-AccessListItem) - A list of addresses and storage keys.
+* `AccessList`: `Arrar<`[`AccessListItem`]`>`(#type-AccessListItem) - A list of addresses and storage keys.
 
 ### `AccessListItem`
 
@@ -1873,9 +1919,9 @@ The AccessListItem objects.
 
 `AccessListItem` is a JSON object with the following fields.
 
-*   `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - The addresses is added into the accessed_addresses global sets.
+* `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - The addresses is added into the accessed_addresses global sets.
 
-*   `storage_keys`: `Arrar<`[`H256`]`>`(#type-H256) - DATA, Hex encoded 32 Bytes - The storage keys is added into the accessed_storage_keys global sets.
+* `storage_keys`: `Arrar<`[`H256`]`>`(#type-H256) - DATA, Hex encoded 32 Bytes - The storage keys is added into the accessed_storage_keys global sets.
 
 ### `TransactionView`
 
@@ -1885,56 +1931,56 @@ The TransactionView objects.
 
 `TransactionView` is a JSON object with the following fields.
 
-*   `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930  is `0x1` and Eip1559 is `0x2`.
-*   `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
-*   `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
-*   `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
-*   `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
-*   `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
-*   `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
-*   `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
-*   `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
-*   `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
-*   `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
-*   `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
-*   `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form
-*   `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
-*   `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
-*   `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-*   `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
-*   `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
-*   `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
-*   `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
+* `type_`: [`U64`](#type-U64) -  64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930  is `0x1` and Eip1559 is `0x2`.
+* `block_number`: [`U256`](#type-U256)  - QUANTITY - block number where this transaction was in. null when it's pending.
+* `block_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in. null when its pending.
+* `hash`: [`Hash`](#type-Hash)  - DATA, Hex encoded 32 Bytes - hash of the transaction.
+* `nonce`: [`U256`](#type-U256)  - QUANTITY - the number of transactions made by the sender prior to this one.
+* `from`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the sender.
+* `to`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - address of the receiver. null when it's a contract creation transaction.
+* `value`: [`U256`](#type-U256)  -  QUANTITY - value transferred in Wei.
+* `gas`: [`U256`](#type-U256)  - QUANTITY - gas provided by the sender.
+* `gas_price`: [`U256`](#type-U256)  - QUANTITY - gas price provided by the sender in Wei.
+* `max_fee_per_gas`: [`U256`](#type-U256) - QUANTITY - the absolute maximum you are willing to pay per unit of gas to get your transaction included in a block. For brevity and clarity, we will refer to this as the Max Fee.
+* `max_priority_fee_per_gas`: [`U256`](#type-U256)  - QUANTITY - (optional) determined by the user, and is paid directly to miners.
+* `raw`: [`Hex`](#type-Hex)  - The raw is the signed transaction in Recursive Length Prefix (RLP) encoded form
+* `input`: [`Hex`](#type-Hex)  - DATA - The input of the transaction.
+* `public_key`: [`Input`](#type-Input)  - The public key of the transaction sender.
+* `access_list`: [`AccessList`](#type-AccessList)  - A list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
+* `chain_id`: [`U256`](#type-U256)  - QUANTITY - The id of the chain.
+* `v`: [`U256`](#type-U256)  - QUANTITY - ECDSA recovery id.
+* `r`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature r.
+* `s`: [`U256`](#type-U256)  - DATA, 32 Bytes - ECDSA signature s.
 
 #### Example
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"result": {
-		"type": "0x2",
-		"blockNumber": "0x1b4",
-		"blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
-		"hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
-		"nonce": "0x1",
-		"transactionIndex": "0x1b70",
-		"from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
-		"to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
-		"value": "0x0",
-		"gas": "0x73a9",
-		"gasPrice": "0x77359400",
-		"maxFeePerGas": "0x539",
-		"maxPriorityFeePerGas": "0x77359400",
-		"raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
-		"input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
-		"publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d312345678",
-		"accessList": [],
-		"chainId": "0x5",
-		"v": "0x0",
-		"r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
-		"s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
-	},
-	"id": 2
+ "jsonrpc": "2.0",
+ "result": {
+  "type": "0x2",
+  "blockNumber": "0x1b4",
+  "blockHash": "0x9a13208ce76c32638f509064545765c8341db9178b77b4f47b458a66325494fd",
+  "hash": "0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65",
+  "nonce": "0x1",
+  "transactionIndex": "0x1b70",
+  "from": "0x92df69a492c93d22c90247434b8d80944daa38fa",
+  "to": "0xef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca",
+  "value": "0x0",
+  "gas": "0x73a9",
+  "gasPrice": "0x77359400",
+  "maxFeePerGas": "0x539",
+  "maxPriorityFeePerGas": "0x77359400",
+  "raw": "0x02f8af05018477359400847735940082ea6094ef11d1c2aa48826d4c41e54ab82d1ff5ad8a64ca80b844a9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000c080a0fa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3da06079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2",
+  "input": "0xa9059cbb0000000000000000000000005cf83df52a32165a7f392168ac009b168c9e89150000000000000000000000000000000000000000000000000000000000000000",
+  "publicKey": "0x1113b46c2c52050fb9fd29cf88d4a9f8d253e17515dc142f72d8bb2cd18fdb3e45098e11811bcdd1487bafb7b24bf35c174cf6ede558059e23ad60d312345678",
+  "accessList": [],
+  "chainId": "0x5",
+  "v": "0x0",
+  "r": "0xfa9bc76185d06c6e3178c66c40c195f374e80a78179392a84c1db731ce4d2d3d",
+  "s": "0x6079373330aa2c6d420267d83d8cd685db20638c7935f02a26fdf99dd010bfa2"
+ },
+ "id": 2
 }
 ```
 
@@ -1946,28 +1992,28 @@ The BlockView objects.
 
 `BlockView` is a JSON object with the following fields.
 
-*   `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
-*   `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
-*   `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
-*   `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
-*   `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-*   `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
-*   `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
-*   `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
-*   `number`: [`U256`](#type-U256)  - QUANTITY, the block number. null when its pending block.
-*   `gas_used`: [`U256`](#type-U256)  - QUANTITY, the total used gas by all transactions in this block.
-*   `gas_limit`: [`U256`](#type-U256)  - QUANTITY, the maximum gas allowed in this block.
-*   `extra_data`: [`Hex`](#type-Hex)  - DATA, the "extra data" field of this block.
-*   `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-*   `timestamp`: [`U256`](#type-U256)  - QUANTITY, the unix timestamp for when the block was collated.
-*   `difficulty`: [`U256`](#type-U256)  - QUANTITY, integer of the difficulty for this block.
-*   `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
-*   `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
-*   `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
-*   `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
-*   `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
-*   `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes, a unique identifier for that block.
-*   `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
+* `hash`: [`H256`](#type-H256) -  DATA, Hex encoded 32 Bytes - hash of the block. null when its pending block.
+* `parent_hash`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - hash of the parent block.
+* `sha3_uncles`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - SHA3 of the uncles data in the block.
+* `author`: [`H169`](#type-H160)  - Hex encoded 20 Bytes - the creator of the block.
+* `miner`: [`H160`](#type-H160)  - DATA, Hex encoded 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
+* `state_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the final state trie of the block.
+* `transactions_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the transaction trie of the block.
+* `receipts_root`: [`H256`](#type-H256)  - DATA, Hex encoded 32 Bytes - the root of the receipts trie of the block.
+* `number`: [`U256`](#type-U256)  - QUANTITY, the block number. null when its pending block.
+* `gas_used`: [`U256`](#type-U256)  - QUANTITY, the total used gas by all transactions in this block.
+* `gas_limit`: [`U256`](#type-U256)  - QUANTITY, the maximum gas allowed in this block.
+* `extra_data`: [`Hex`](#type-Hex)  - DATA, the "extra data" field of this block.
+* `logs_bloom`: [`Boolom`](#type-Boolom)  - DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
+* `timestamp`: [`U256`](#type-U256)  - QUANTITY, the unix timestamp for when the block was collated.
+* `difficulty`: [`U256`](#type-U256)  - QUANTITY, integer of the difficulty for this block.
+* `total_difficulty`: [`U256`](#type-U256)  - QUANTITY - integer of the total difficulty of the chain until this block.
+* `base_fee_per_gas`: [`U256`](#type-U256)  - he minimum fee per gas required for a transaction to be included in the block.
+* `uncles`: `Array<`[`U256`](#type-U256)`>`  - Array - Array of uncle hashes.
+* `transactions`:`Array<`[`RichTransactionOrHash`](#type-RichTransactionOrHash)`>` - The transactions in the block body.
+* `size`: [`U256`](#type-U256)  - QUANTITY - integer the size of this block in bytes.
+* `mix_hash`: [`H256`](#type-H256)  - Hex encoded 32 Bytes, a unique identifier for that block.
+* `nonce`: [`U256`](#type-U256)  - DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
 
 ### `Web3Log`
 
@@ -1977,18 +2023,18 @@ The Web3Log log objects.
 
 `Web3Log` is a JSON object with the following fields.
 
-*   `address`: [`H160`](#type-H160) - Hex encoded 20 Bytes - address from which this log originated.
-*   `topics`: `Array<`[`H256`](#type-H256)`>` - Array of 0 to 4 32 Bytes of indexed log arguments. 
+* `address`: [`H160`](#type-H160) - Hex encoded 20 Bytes - address from which this log originated.
+* `topics`: `Array<`[`H256`](#type-H256)`>` - Array of 0 to 4 32 Bytes of indexed log arguments.
 
     >In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declared the event with the anonymous specifier.
 
-*   `data`:  [`Hex`](#type-Hex) - contains one or more 32 Bytes non-indexed arguments of the log.
-*   `block_hash`: [`H256`](#type-H256)  - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash.   
-*   `block_number`: [`U256`](#type-U256)  - the block number where this log was in. Null when its pending. Null when its pending log.
-*   `transaction_hash`: [`H256`](#type-H256) - Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
-*   `transaction_index`: [`U256`](#type-U256) - hexadecimal of the transactions index  position log was created from. Null when its pending log.
-*   `log_index`: [`U256`](#type-U256)  - hexadecimal of the log index position in the block. Null when its pending log.
-*   `removed`: [`bool`](#type-bool)  - true when the log was removed, due to a chain	reorganization. false if it's a valid log.
+* `data`:  [`Hex`](#type-Hex) - contains one or more 32 Bytes non-indexed arguments of the log.
+* `block_hash`: [`H256`](#type-H256)  - [optional] With the addition of EIP-234, blockHash restricts the logs returned to the single block with the 32-byte hash blockHash.
+* `block_number`: [`U256`](#type-U256)  - the block number where this log was in. Null when its pending. Null when its pending log.
+* `transaction_hash`: [`H256`](#type-H256) - Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
+* `transaction_index`: [`U256`](#type-U256) - hexadecimal of the transactions index  position log was created from. Null when its pending log.
+* `log_index`: [`U256`](#type-U256)  - hexadecimal of the log index position in the block. Null when its pending log.
+* `removed`: [`bool`](#type-bool)  - true when the log was removed, due to a chain reorganization. false if it's a valid log.
 
 ### `Web3SyncStatus`
 
@@ -1998,9 +2044,9 @@ The Web3SyncStatus objects.
 
 `Web3SyncStatus` is a JSON object with the following fields.
 
-*   `starting_block`: [`U256`](#type-U256) - QUANTITY, the block at which the import started (will only be reset, after the sync reached his head).
-*   `current_block`:  [`U256`](#type-U256) - QUANTITY, the current block, same as eth_blockNumber.
-*   `highest_block`:  [`U256`](#type-U256) -QUANTITY, the estimated highest block.
+* `starting_block`: [`U256`](#type-U256) - QUANTITY, the block at which the import started (will only be reset, after the sync reached his head).
+* `current_block`:  [`U256`](#type-U256) - QUANTITY, the current block, same as eth_blockNumber.
+* `highest_block`:  [`U256`](#type-U256) -QUANTITY, the estimated highest block.
 
 ### `Web3CallRequest`
 
@@ -2010,17 +2056,17 @@ The Web3CallRequest objects.
 
 `Web3CallRequest` is a JSON object with the following fields.
 
-*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559  is `0x2`.
-*   `from`:[`H160`](#type-H256) - Hex encoded 20 Bytes, the address the transaction is sent from.
-*   `to`:  [`H160`](#type-H160) - Hex encoded 20 Bytes, the address the transaction is directed to.
-*   `gas_price`: [`U256`](#type-U256)  - [optional] hexadecimal value of the gasPrice used for each paid gas.
-*   `max_fee_per_gas`: [`U256`](#type-U256)  - [optional] Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas.
-*   `gas`: [`U256`](#type-U256) -  [optional] hexadecimal value of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions.
-*   `value`: [`U256`](#type-U256) - [optional] hexadecimal value of the value sent with this transaction.
-*   `data`: [`Hex`](#type-Hex)  - [optional] Hash of the method signature and encoded parameters.
-*   `nonce`: [`U256`](#type-U256)  - Nonce is a sequence number, issued by the originating externally owned account, used to prevent message replay.
-*   `access_list`: `Array<` [`AccessList`](#type-AccessList)`>`  - The accessList specifies a list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
-*   `max_priority_fee_per_gas`: [`U256`](#type-U256)  -  QUANTITY - (optional) determined by the user, and is paid directly to miners.
+* `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559  is `0x2`.
+* `from`:[`H160`](#type-H256) - Hex encoded 20 Bytes, the address the transaction is sent from.
+* `to`:  [`H160`](#type-H160) - Hex encoded 20 Bytes, the address the transaction is directed to.
+* `gas_price`: [`U256`](#type-U256)  - [optional] hexadecimal value of the gasPrice used for each paid gas.
+* `max_fee_per_gas`: [`U256`](#type-U256)  - [optional] Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas.
+* `gas`: [`U256`](#type-U256) -  [optional] hexadecimal value of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions.
+* `value`: [`U256`](#type-U256) - [optional] hexadecimal value of the value sent with this transaction.
+* `data`: [`Hex`](#type-Hex)  - [optional] Hash of the method signature and encoded parameters.
+* `nonce`: [`U256`](#type-U256)  - Nonce is a sequence number, issued by the originating externally owned account, used to prevent message replay.
+* `access_list`: `Array<` [`AccessList`](#type-AccessList)`>`  - The accessList specifies a list of addresses and storage keys; these addresses and storage keys are added into the accessed_addresses and accessed_storage_keys global sets.
+* `max_priority_fee_per_gas`: [`U256`](#type-U256)  -  QUANTITY - (optional) determined by the user, and is paid directly to miners.
 
 ### `Web3FeeHistory`
 
@@ -2030,10 +2076,10 @@ The Web3FeeHistory objects.
 
 `Web3FeeHistory` is a JSON object with the following fields.
 
-*   `oldest_block`: [`U256`](#type-U256) - Lowest number block of the returned range.
-*   `reward`:  `Arrary<`[`U256`](#type-U256)`>` - (Optional) An array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
-*   `base_fee_per_gas`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block base fees per gas. 	This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.
-*   `gas_used_ratio`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit.
+* `oldest_block`: [`U256`](#type-U256) - Lowest number block of the returned range.
+* `reward`:  `Arrary<`[`U256`](#type-U256)`>` - (Optional) An array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
+* `base_fee_per_gas`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block base fees per gas.  This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.
+* `gas_used_ratio`:  `Arrary<`[`U256`](#type-U256)`>` - An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit.
 
 ### `Web3Receipt`
 
@@ -2043,21 +2089,21 @@ The Web3Receipt objects.
 
 `Web3Receipt` is a JSON object with the following fields.
 
-*   `block_number`: [`U256`](#type-U256) - QUANTITY - block number where this transaction was in.
-*   `block_hash`: [`H256`](#type-H256) - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in.
-*   `contract_address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null.
-*   `cumulative_gas_used`: [`U256`](#type-U256) - QUANTITY, the total amount of gas used when this transaction was executed in the block.
-*   `effective_gas_price`: [`U256`](#type-U256) - QUANTITY, the price per gas at the time of your transaction, so the total gas cost of your transaction is effectiveGasPrice * gasUsed
-*   `from`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the sender.
-*   `gas_used`: [`U256`](#type-U256) - QUANTITY - The amount of gas used by this specific transaction alone.
-*   `logs`:  `Arrary<`[`Web3ReceiptLog`](#type-Web3ReceiptLog)`>` - Array, array of log objects, which this transaction generated.
-*   `logs_bloom`: [`Bloom`](#type-Bloom) - DATA, 256 Bytes, bloom filter for light clients to quickly retrieve related logs.
-*   `state_root`: [`Hash`](#type-Hash) - DATA 32 bytes of post-transaction stateroot (pre Byzantium)
-*   `status`: [`U256`](#type-U256) - QUANTITY either 1 (success) or 0 (failure)
-*   `to`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the receiver. null when its a contract creation transaction.
-*   `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes - hash of the transaction.
-*   `transaction_index`: [`U256`](#type-U256) - QUANTITY - integer of the transactions index position in the block.
-*   `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559 is `0x2`.
+* `block_number`: [`U256`](#type-U256) - QUANTITY - block number where this transaction was in.
+* `block_hash`: [`H256`](#type-H256) - DATA, Hex encoded 32 Bytes - hash of the block where this transaction was in.
+* `contract_address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null.
+* `cumulative_gas_used`: [`U256`](#type-U256) - QUANTITY, the total amount of gas used when this transaction was executed in the block.
+* `effective_gas_price`: [`U256`](#type-U256) - QUANTITY, the price per gas at the time of your transaction, so the total gas cost of your transaction is effectiveGasPrice * gasUsed
+* `from`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the sender.
+* `gas_used`: [`U256`](#type-U256) - QUANTITY - The amount of gas used by this specific transaction alone.
+* `logs`:  `Arrary<`[`Web3ReceiptLog`](#type-Web3ReceiptLog)`>` - Array, array of log objects, which this transaction generated.
+* `logs_bloom`: [`Bloom`](#type-Bloom) - DATA, 256 Bytes, bloom filter for light clients to quickly retrieve related logs.
+* `state_root`: [`Hash`](#type-Hash) - DATA 32 bytes of post-transaction stateroot (pre Byzantium)
+* `status`: [`U256`](#type-U256) - QUANTITY either 1 (success) or 0 (failure)
+* `to`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address of the receiver. null when its a contract creation transaction.
+* `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes - hash of the transaction.
+* `transaction_index`: [`U256`](#type-U256) - QUANTITY - integer of the transactions index position in the block.
+* `transaction_type`: [`U64`](#type-U64) - 64-bit integer that represents the type of the transaction. Axon has evolved to support 3 types of transactions: Legacy is `0x0`, Eip2930 is `0x1` and Eip1559 is `0x2`.
 
 ### `Web3ReceiptLog`
 
@@ -2067,13 +2113,15 @@ The Web3ReceiptLog objects.
 
 `Web3ReceiptLog` is a JSON object with the following fields.
 
-*   `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address from which this log originated.
-*   `topics`: `Arrary` `<`[`H256`](#type-H256)`>` - Array of DATA, array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
-	> In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.
-*   `data`: [`Hex`](#type-Hex) - DATA - contains one or more 32 Bytes non-indexed arguments of the log.
-*   `block_number`: [`U256`](#type-U256) - QUANTITY, the block number where this log was in. null when its pending. null when its pending log.
-*   `block_hash`: [`Hash`](#type-Hash) - DATA, Hex encode 32 Bytes, hash of the block where this log was in. null when its pending. null when its pending log.
-*   `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
-*   `transaction_index`: [`U256`](#type-U256) - QUANTITY, integer of the transactions index position log was created from. null when its pending log.
-*   `log_index`:  [`U256`](#type-U256) - QUANTITY, integer of the log index position in the block. null when its pending log.
-*   `removed`: [`bool`](#type-bool) - TAG, `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.
+* `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes, address from which this log originated.
+* `topics`: `Arrary` `<`[`H256`](#type-H256)`>` - Array of DATA, array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
+
+ > In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.
+
+* `data`: [`Hex`](#type-Hex) - DATA - contains one or more 32 Bytes non-indexed arguments of the log.
+* `block_number`: [`U256`](#type-U256) - QUANTITY, the block number where this log was in. null when its pending. null when its pending log.
+* `block_hash`: [`Hash`](#type-Hash) - DATA, Hex encode 32 Bytes, hash of the block where this log was in. null when its pending. null when its pending log.
+* `transaction_hash`: [`Hash`](#type-Hash) - DATA, Hex encoded 32 Bytes, hash of the transactions this log was created from. null when its pending log.
+* `transaction_index`: [`U256`](#type-U256) - QUANTITY, integer of the transactions index position log was created from. null when its pending log.
+* `log_index`:  [`U256`](#type-U256) - QUANTITY, integer of the log index position in the block. null when its pending log.
+* `removed`: [`bool`](#type-bool) - TAG, `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.

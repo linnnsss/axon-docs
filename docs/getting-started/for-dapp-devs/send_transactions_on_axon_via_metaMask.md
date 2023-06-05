@@ -16,9 +16,9 @@ This guide provides instructions for sending transactions on Axon via MetaMask a
 
 ### 1.1 Local Setup
 
-[Download Axon](https://github.com/axonweb3/axon), find <b>Install</b> in <b>README</b>, and run the following commands to start the node: 
+[Download Axon](https://github.com/axonweb3/axon), find <b>Install</b> in <b>README</b>, and run the following commands to start the node:
 
-`cargo run --release -- -c devtools/chain/config.toml -g devtools/chain/genesis_single_node.json` 
+`cargo run --release -- -c devtools/chain/config.toml -g devtools/chain/genesis_single_node.json`
 
 Once the node has been successfully set up, you will notice that the block height is increasing, for instance: > Overlord: state go to new height 2171.
 
@@ -68,7 +68,7 @@ Once you have filled out all the items above, click <b>Save</b> and you will be 
 
 Add your Axon Genesis account to the local network. MetaMask supports importing accounts via both private keys and keystore files.
 
-Here we use the private key. In Axon’s repository, find `devtools/chain/config.toml` and copy the corresponding content of the privKey. 
+Here we use the private key. In Axon’s repository, find `devtools/chain/config.toml` and copy the corresponding content of the privKey.
 
 For now, it is `0x37aa0f893d05914a4def0460c0a984d3611546cfb26924d7a7ca6e0db9950a2d`.
 
@@ -86,7 +86,7 @@ Click <b>Next</b>.
 
 <img alt="Untitled 3" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 3.png")}  width="50%"/>
 
-Click <b>Confirm</b>. 
+Click <b>Confirm</b>.
 
 <img alt="Untitled 4" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 4.png")}  width="80%"/>
 

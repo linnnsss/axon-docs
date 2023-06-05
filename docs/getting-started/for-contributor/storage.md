@@ -26,9 +26,9 @@ Axon storage module ([GitHub repo](https://github.com/axonweb3/axon/tree/dc9de22
 
 <p class="axon-anno">Figure 2. The design of Axon’s storage module and other related components</p>
 
-Storage module connects memory or databases through the adapter pattern, as shown in the diagram above. This adapter plays a central role in data decoupling. First, it decouples Axon from other databases. When new databases are added, you only need to implement their corresponding traits. As soon as they are abstracted into a trait, other Axon modules can interact with Axon's database. 
+Storage module connects memory or databases through the adapter pattern, as shown in the diagram above. This adapter plays a central role in data decoupling. First, it decouples Axon from other databases. When new databases are added, you only need to implement their corresponding traits. As soon as they are abstracted into a trait, other Axon modules can interact with Axon's database.
 
-Axon’s adapter pattern can also decouple the storage module from other modules inside Axon. The decoupling enables a module to use data by creating an adapter instance based on the previous abstract trait, so that other modules can process the data through this instance. This is how the decoupling of the storage module is implemented. 
+Axon’s adapter pattern can also decouple the storage module from other modules inside Axon. The decoupling enables a module to use data by creating an adapter instance based on the previous abstract trait, so that other modules can process the data through this instance. This is how the decoupling of the storage module is implemented.
 
 Find traits in: `protocol/src/traits/storage.rs`; find the implementation in `core/storage/src/lib.rs`.
 
@@ -50,7 +50,7 @@ All added concrete databases should implement the StorageAdapter trait. For inst
 
 ### cache.rs
 
-It defines the data structure used to implement the cache function. 
+It defines the data structure used to implement the cache function.
 
 ### libs.rs
 

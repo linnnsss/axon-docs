@@ -12,11 +12,11 @@ Axon-CLI is an all-in-one command-line interface that makes operating Axon fast 
 
 **Zero to Axon with Axon-CLI** is a hands-on tutorial. In less than 15 minutes, you can build a chain from scratch and learn how to start and manage a node with just one command.
 
-### Requirement
+## Requirement
 
 Axon-CLI heavily relies on `docker`, make sure that you have installed it. To run `apm`, `ansible-playbook` is also required.
 
-### Install Axon-CLI From GitHub
+## Install Axon-CLI From GitHub
 
 Start by cloning Axon-CLI from the [GitHub repo](https://github.com/axonweb3/axon-cli) by command:
 
@@ -44,7 +44,7 @@ Now your basic Axon-CLI development environment is ready. Enter the Axon-CLI int
 
 To quit Axon-CLI, use `Ctrl` + `C`.
 
-### Managing Axon nodes
+## Managing Axon nodes
 
 Before starting, we have to generate key pairs for nodes, by running:
 
@@ -72,7 +72,7 @@ axon start
 
 See `axon help` for more usage.
 
-### Application performance monitoring (APM)
+## Application performance monitoring (APM)
 
 Start APM monitor and agent(s) by running:
 
@@ -103,13 +103,13 @@ Use `benchmark start` and `benchmark stop` control the benchmark status.
 
 #### Axon & CKB
 
-Axon repository on GitHub : https://github.com/axonweb3/axon
+Axon repository on GitHub : <https://github.com/axonweb3/axon>
 
-CKB docs and technical reference: https://docs.nervos.org/
+CKB docs and technical reference: <https://docs.nervos.org/>
 
 #### Deploy EVM DApps
 
 Learn how to get started with EVM and deploy Solidity-based smart contracts in Hardhat environment.
 
-Solidity: https://docs.soliditylang.org/en/latest/
-Hardhat: https://hardhat.org/
+Solidity: <https://docs.soliditylang.org/en/latest/>
+Hardhat: <https://hardhat.org/>

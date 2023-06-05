@@ -8,7 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Mempool
 
-Mempool (i.e., memory pool), or transaction pool, is the queue where unconfirmed transactions are temporarily stored for further verification in order to be included in a block. 
+Mempool (i.e., memory pool), or transaction pool, is the queue where unconfirmed transactions are temporarily stored for further verification in order to be included in a block.
 
 This brief introduction to Axon's mempool explains how Axon performs transaction validation, and helps you understand its uniqueness in the design of a high-performance EVM-compatible framework.
 
@@ -18,7 +18,7 @@ Any transaction on Axon is subject to a series of validations before and after e
 
 Before mempool, a transaction must undergo the following checks:
 
-1. Balance must be greater than the base fee; 
+1. Balance must be greater than the base fee;
 2. Transaction size must be smaller than 1M bytes;
 3. Other parameters including gas price, gas limit, and chain id;
 4. Transaction signature validation, to verify the authenticity of the transaction;
@@ -42,9 +42,10 @@ Another challenge is related to nonce. Ethereum mandates incrementing nonces on 
 * Uncommitted nonce in the pool will not be written back into the nonce check, due to poor write-back performance and the possibility of replacing the same nonce.
 
 ## Four Transaction Queues To Ensure Smooth Flow Under High TPS
+
 The diagram below sketches the process where a transaction (with its state) passes the nonce check, enters the mempool, and goes through these queues.
 
-<img src={useBaseUrl("img/for-contributors/Mempool fig 1. 4 queues.png")}/> 
+<img src={useBaseUrl("img/for-contributors/Mempool fig 1. 4 queues.png")}/>
 
 These four queues are:
 
@@ -53,7 +54,7 @@ These four queues are:
 * Sorting Queue: transactions are split and sorted by senders and nonces respectively. Well-sorted transactions are inserted into package queue.
 * Packaging Queue: transactions are packaged and ready to be added to the next block.
 
-As there are multiple queues in mempool to process the indexing and the state changes of transactions respectively, the full-lifecycle record of transaction (i.e. the state changes of a transaction from entering the mempool to being submitted or discarded) is needed, allowing Axon to ensure that one transaction is accessed consistently in any queue. Therefore, as soon as a transaction enters the mempool, it will be wrapped up in the form of “tx + state”. 
+As there are multiple queues in mempool to process the indexing and the state changes of transactions respectively, the full-lifecycle record of transaction (i.e. the state changes of a transaction from entering the mempool to being submitted or discarded) is needed, allowing Axon to ensure that one transaction is accessed consistently in any queue. Therefore, as soon as a transaction enters the mempool, it will be wrapped up in the form of “tx + state”.
 
 The full-lifecycle record of transaction - the state changes of a transaction from entering the mempool to being submitted or discarded - is required because there are multiple queues in mempool to process the indexing and the state changes of transactions, respectively. This enables Axon to guarantee that one transaction is accessed consistently in any queue. A transaction will therefore be wrapped up in the form of "tx + state" as soon as it enters the mempool.
 
@@ -63,7 +64,7 @@ Axon, as a native cross-chain framework, supports not only native Ethereum-like 
 
 In addition to the mempool for general transactions described above, Axon has a pool for built-in contracts called system mempool. This system mempool is embedded in the general mempool and formed by a simple queue without any redundant design.
 
-For any transaction that fits a special address, native contracts or cross-chain, it will be passed into the system pool, in a first-in-first-out queue where only one transaction can be submitted per block cycle. 
+For any transaction that fits a special address, native contracts or cross-chain, it will be passed into the system pool, in a first-in-first-out queue where only one transaction can be submitted per block cycle.
 
 The following code shows how to check transaction address in Axon:
 
@@ -77,4 +78,4 @@ If `Call(H160)` = [`0xb484fd480e598621638f380f404697cd9f58b0f8`](https://github.
 
 The system mempool and general mempool are two mutually independent modules. Packaging and sorting in the system mempool are separated from general transactions.
 
-<img src={useBaseUrl("img/for-contributors/Mempool fig 2. System and general mempool.png")}/> 
+<img src={useBaseUrl("img/for-contributors/Mempool fig 2. System and general mempool.png")}/>

@@ -12,14 +12,14 @@ Axon Faucet provides tokens for testing purposes. You can explore and experiment
 
 ## Deployment
 
-### 1. Copy axon-devops directory to the target machine.
+### 1. Copy axon-devops directory to the target machine
 
 ```shell
 git clone https://github.com/axonweb3/axon-devops
 cd axon-devops/axon-faucet
 ```
 
-### 2. Edit the config file.
+### 2. Edit the config file
 
 - axon-devops/axon-faucet/config.yml
 
@@ -40,7 +40,7 @@ mongodb_url: mongodb://root:mongodbpassword@faucet-mongo:27017
 # URL address of mongo db that using by faucet
 ```
 
-### 3. Execute one-click deployment.
+### 3. Execute one-click deployment
 
 ```shell
 cd axon-devops/axon-exeplorer
@@ -49,13 +49,13 @@ docker-compose ps # check axon faucet status
 make down #stop axon faucet
 ```
 
-### 4. Initialize a mnemonic phrase.
+### 4. Initialize a mnemonic phrase
 
 ```shell
 curl http://localhost:8502/api/import-mnemonic?mnemonic=test%20test%20test%20test%20test%20test%20test%20test%20test%20test%20test%20junk
 # Make sure to use unique mnemonic words in real deployment, NOT the sample words (these "test"s) here.
 ```
 
-Once successfully deployed, open your browser and visit the faucet page http://localhost:8502/ to claim your tokens.
+Once successfully deployed, open your browser and visit the faucet page <http://localhost:8502/> to claim your tokens.
 
 <img alt="Untitled" src={useBaseUrl("img/devops/Axon Faucet interface.png")}  width="80%"/>

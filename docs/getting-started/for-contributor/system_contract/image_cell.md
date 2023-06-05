@@ -16,6 +16,7 @@ As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/
 
 :::tip
 Before proceeding, we recommend reading the following pieces to get prerequisite knowledge:
+
 - [Axon Fundamentals](https://docs.axonweb3.io/fundamentals)
 :::
 
@@ -94,20 +95,21 @@ contract ImageCell {
 ```
 
 - `update()` : update the ICSC MPT with data relayed from CKB, including block headers and cells.
-    - `inputs` : cells consumed in CKB, also need to be marked as consumed in the ICSC MPT.
-    - `outputs` : cells created in CKB, also need to be saved in the ICSC MPT.
+  - `inputs` : cells consumed in CKB, also need to be marked as consumed in the ICSC MPT.
+  - `outputs` : cells created in CKB, also need to be saved in the ICSC MPT.
 - `rollback()` : the reverse process of `update()`
-    - `inputs`: cells that have been reverted to an unconsumed state in CKB, also need to be marked as unconsumed in the ICSC MPT.
-    - `outputs` : cells that have been reverted to an uncreated state in CKB, also need to be removed from the ICSC MPT.
+  - `inputs`: cells that have been reverted to an unconsumed state in CKB, also need to be marked as unconsumed in the ICSC MPT.
+  - `outputs` : cells that have been reverted to an uncreated state in CKB, also need to be removed from the ICSC MPT.
 
 As mentioned earlier, ICSC has built a separate MPT to save space in the EVM MPT. This requires ICSC to be implemented as a system contract, because only system contracts can have storage space independent of the EVM MPT. Unlike general contracts, system contracts can only be written in Rust. Therefore, the contract `ImageCell` mentioned above must be implemented in Rust, rather than Solidity.  
 
 The `ImageCell` is only used for generating Rust bindings to parse transaction data. This will be explained further in the next section.
 
 ### Decode Transaction Data
-After receiving the transactions sent by the Forcerelay, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro or the [`Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`. 
 
-1. Generate Ethereum contract ABI (Application Binary Interface) using [hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) or [solc](https://docs.soliditylang.org/en/latest/installing-solidity.html). 
+After receiving the transactions sent by the Forcerelay, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro or the [`Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`.
+
+1. Generate Ethereum contract ABI (Application Binary Interface) using [hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) or [solc](https://docs.soliditylang.org/en/latest/installing-solidity.html).
 Take [hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) as the example, after compiling the contracts, an ABI will be generated automatically and saved in the file `artifacts/contracts/ImageCell.sol/ImageCell.json`. Open the file and find the key `abi`, whose value is what we need.
 2. Generate type-safe bindings from Ethereum contract ABI using the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro, or the [`Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
 
@@ -122,7 +124,8 @@ fn exec_<B: Backend + ApplyBackend>(&self, backend: &mut B, tx: &SignedTransacti
     ...
 }
  ```
- ### Store Transaction Data
+
+### Store Transaction Data
 
 Finally, we need to store the decoded transaction data into ICSC MPT, which includes cells.
 
@@ -131,6 +134,7 @@ The data storage format for CKB cell is as follows:
 | Key | Value |
 | --- | --- |
 | OutPoint (36 Bytes) | CellInfo (Bytes) |
+
 - key: 32 bytes tx hash + 4 bytes output index (u32 as little endian bytes)
 - value: CellInfo
 

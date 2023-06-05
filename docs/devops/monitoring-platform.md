@@ -10,11 +10,11 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Black box, monitoring system, and observability
 
-A distributed system contains multiple physically separate nodes linked together by a network. Such systems are inherently difficult to monitor as they are composed of “block-box” components: nodes from different, even competing providers. In such an environment, how to quickly debug, track service processing time, identify performance bottlenecks, and reasonably evaluate service capacity are the major challenges. Monitoring platform plays a crucial role in system feedback, without which improvement is impossible. 
+A distributed system contains multiple physically separate nodes linked together by a network. Such systems are inherently difficult to monitor as they are composed of “block-box” components: nodes from different, even competing providers. In such an environment, how to quickly debug, track service processing time, identify performance bottlenecks, and reasonably evaluate service capacity are the major challenges. Monitoring platform plays a crucial role in system feedback, without which improvement is impossible.
 
 Axon is built on a peer-to-peer network. It's real-time monitoring system is composed of components that collect logs, metrics, and system resource usage data from the nodes and display the information in graphs in Grafana, the data visualization platform. This article aims to give you an overview of the architecture of Axon monitoring system and the key components (II), the deployment of the monitoring platform (III), and how to read these metrics (IV). Sections III and IV include technical details and parameters that will be particularly informative for DevOps; if these technical details are not your focus, feel free to skip.
 
-Before diving into the technical details, let's refresh ourselves about the concept of “observability". When introduced in response to the black box problems in distributed systems, observability refers to the ability to measure the internal states of a system by examining its outputs. While traditional monitoring and alerting are focusing on system anomalies and failures, observability is about showing the actual behavior of the system itself. For an observable system, the primary concern is the state of the application itself, such as the current throughput and latency, instead of the indirect evidences like the machine or the network where the application is situated. 
+Before diving into the technical details, let's refresh ourselves about the concept of “observability". When introduced in response to the black box problems in distributed systems, observability refers to the ability to measure the internal states of a system by examining its outputs. While traditional monitoring and alerting are focusing on system anomalies and failures, observability is about showing the actual behavior of the system itself. For an observable system, the primary concern is the state of the application itself, such as the current throughput and latency, instead of the indirect evidences like the machine or the network where the application is situated.
 
 Logs, metrics, and traces are seen as three pillars of observability.
 
@@ -32,9 +32,9 @@ Metrics are mainly aggregated data measured over intervals of time. It is suited
 
 A trace is a series of causally related distributed events, providing a wider and continuous view of an application. Tracing follows a program’s data progression path through a system. A trace contains one or more span(s), the logical unit of work named by [Jaeger.](https://www.jaegertracing.io/) Each span includes the operation name, start time, and duration. Tracing adds critical visibility into the health of an application end-to-end, which is helpful for getting a better understanding of system behavior, debugging and troubleshooting issues related to performance.
 
-Implement a monitoring system basically follows these steps: 
+Implement a monitoring system basically follows these steps:
 
-1. Setup event tracking 
+1. Setup event tracking
 2. Output formatted logs
 3. Collect metrics and logs
 4. Display data in graphing interface
@@ -82,11 +82,11 @@ git clone https://github.com/axonweb3/axon-devops
 cd axon-devops/apm/monitor
 ```
 
-**Step 2** Edit `prometheus.yml` and `roles/monitor/vars/main.yml`. 
+**Step 2** Edit `prometheus.yml` and `roles/monitor/vars/main.yml`.
 
-**`prometheus.yml`**: contains Prometheus configuration files. 
+**`prometheus.yml`**: contains Prometheus configuration files.
 
-`scrape_config`, one of these files, specifies a set of targets and parameters describing how to scrape them. In the general case, one scrape configuration specifies a single [job](https://prometheus.io/docs/concepts/jobs_instances/#jobs-and-instances). 
+`scrape_config`, one of these files, specifies a set of targets and parameters describing how to scrape them. In the general case, one scrape configuration specifies a single [job](https://prometheus.io/docs/concepts/jobs_instances/#jobs-and-instances).
 
 Below are a few `scrape_config` parameters set in Axon, and more configuration information is available [here](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config):
 
@@ -94,16 +94,16 @@ Below are a few `scrape_config` parameters set in Axon, and more configuration i
 global:
 
   scrape_interval:     5s 
-	# Scrape targets from a job every 15s. Default = 1m.
+ # Scrape targets from a job every 15s. Default = 1m.
   
-	evaluation_interval: 5s 
-	# Evaluate rules every 15s. Default = 1m.
+ evaluation_interval: 5s 
+ # Evaluate rules every 15s. Default = 1m.
   
-	scrape_timeout:      5s 
-	# Set to the global default (10s).
+ scrape_timeout:      5s 
+ # Set to the global default (10s).
 ```
 
-`roles/monitor/vars/main.yml`: mainly used as the parameters required by [Ansible](https://www.ansible.com/) when deploying the monitor. 
+`roles/monitor/vars/main.yml`: mainly used as the parameters required by [Ansible](https://www.ansible.com/) when deploying the monitor.
 
 ```yml
 monitor_dir: /home/ckb/axon-monitor
@@ -146,7 +146,7 @@ AXON_LOG_PATH=axon/logs
 # Associated with the [logger] log_path parameter.
 ```
 
-`jaeger_agent_port` config file is [here](https://github.com/axonweb3/axon/blob/18aa176665159710d282c42394fa4506b8b5755e/devtools/chain/config.toml#L68). 
+`jaeger_agent_port` config file is [here](https://github.com/axonweb3/axon/blob/18aa176665159710d282c42394fa4506b8b5755e/devtools/chain/config.toml#L68).
 
 - `filebeat.yml`: used to build structured configurations for lists and dictionaries
 
@@ -162,22 +162,22 @@ filebeat.inputs:
   fields_under_root: true
   # Custom fields will be stored as top-level fields in the output file
   
-	keys_under_root: true
+ keys_under_root: true
   # The existing keys are overwritten by keys in decoded JSON obejct
   
-	ignore_older: 5m
+ ignore_older: 5m
   # Filebeat will ingore files modified before the specified time span
   
-	scan_frequency: 1s
+ scan_frequency: 1s
   # How frequently Filebeat checks new files in the path specified for files collection
 
-	output.elasticsearch:
+ output.elasticsearch:
   # filebeat sends logs to elasticsearch
   
-	hosts: ["ES_ADDRESS:9200"]
+ hosts: ["ES_ADDRESS:9200"]
    # elasticsearch host
   
-	indices:
+ indices:
     - index: "axon-%{[agent.version]}-%{+yyyy.MM.dd}"
    # Index for creating datasource in Grafaba. Logs can be located with axon-*
 ```
@@ -237,7 +237,7 @@ When all services are up, you can access the corresponding monitoring platforms 
 http://grafana_ip:3000
 ```
 
-- Jaeger 
+- Jaeger
 
 ```
 http://jarger_ip:16686
@@ -407,7 +407,7 @@ This section provides an overview of the monitoring metrics on each Grafana pane
 
 | Name                                   | Description                                                  | Legend Details                                               |
 | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| network_message_arrival_rate           | Estimate the network message arrival rate in the last five minutes | Estimate the network message arrival rate in the last five minutes `(  # broadcast_count * (instance_count - 1)  sum(increase(axon_network_message_total{target="all", direction="sent"}[5m])) * (count(count by (instance) (axon_network_message_total)) - 1)  # unicast_count  + sum(increase(axon_network_message_total{target="single", direction="sent"}[5m]))) /# received_count(sum(increase(axon_network_message_total{direction="received"}[5m]))) ` |
+| network_message_arrival_rate           | Estimate the network message arrival rate in the last five minutes | Estimate the network message arrival rate in the last five minutes `(  # broadcast_count * (instance_count - 1)  sum(increase(axon_network_message_total{target="all", direction="sent"}[5m])) * (count(count by (instance) (axon_network_message_total)) - 1)  # unicast_count  + sum(increase(axon_network_message_total{target="single", direction="sent"}[5m]))) /# received_count(sum(increase(axon_network_message_total{direction="received"}[5m])))` |
 | consensus_round_cost                   | Number of rounds needed to reach consensus                   | **{{instance}}** Number of rounds needed to reach consensus `(axon_consensus_round > 0 )` |
 | Connected Peers(Gauge)                 | Number of nodes on the current connection                    | **{{instance}}** Number of nodes on the current connection `axon_network_connected_peers` |
 | Connected Peers(Graph)                 | Number of nodes on the current connection                    | **Saved peers** Total number of peers `max(axon_network_saved_peer_count)` |
@@ -420,7 +420,7 @@ This section provides an overview of the monitoring metrics on each Grafana pane
 | Connecting Peers                       | Number of active initiations to establish connections with other | **{{instance}}** Number of active initiations to establish connections with other machines `axon_network_outbound_connecting_peers` |
 | Disconnected count (To other peers)    | Disconnected count                                           | **{{instance}}** Disconnected count `axon_network_ip_disconnected_count` |
 | Received messages in processing        | Number of messages being processed                           | **{{instance}}** Number of messages being processed `axon_network_received_message_in_processing_guage` |
-| Received messages in processing by ip  | Number of messages being processed (based on IP of received messages) | **{{instance}}** Number of messages being processed (based on IP of received messages) `axon_network_received_ip_message_in_processing_guage{instance=~"$node"} ` |
+| Received messages in processing by ip  | Number of messages being processed (based on IP of received messages) | **{{instance}}** Number of messages being processed (based on IP of received messages) `axon_network_received_ip_message_in_processing_guage{instance=~"$node"}` |
 | Ping (ms)_ p90                         | p90 for p2p Ping                                             | **{{instance}}** p90 for P2p Ping `avg(histogram_quantile(0.90, sum(rate(axon_network_ping_in_ms_bucket[5m])) by (le, instance)))` |
 | Network bandwidth usage per second all | link to axon-node (Network bandwidth usage per second all)   | link to axon-node (Network bandwidth usage per second all)   |
 | Internet traffic per hour              | link to axon-node (Internet traffic per hour)                | link axon-benchmark (internet traffic per hour)              |
