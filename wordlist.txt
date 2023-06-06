@@ -278,3 +278,4 @@ privkey
 crosschain
 ws
 InitialAccount
+multiaddr

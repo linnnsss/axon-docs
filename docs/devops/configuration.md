@@ -23,7 +23,7 @@ Account is a list that includes the addresses and amount of tokens initially all
 ```toml
 [[accounts]]
 address = "0xa0ee7a142d267c1f36714e4a8f75612f20a79720"
-balance = "04ee2d6d415b85acef8100000000"
+balance = "0x04ee2d6d415b85acef8100000000"
 ```
 
 ### crosschain_contract_address
@@ -44,7 +44,7 @@ The path for data storage.
   
 ### privkey
 
-The private key for the HTTP listening port node, used for handshake and message signing. Privkey can be directly written in the configuration file or read from an environment variable. For instance, privkey = "A" refers to the privkey fetches its value from Environment Variable A.
+The private key for the HTTP listening port node, used for handshake and message signing. Privkey can be directly written in the configuration file or read from an environment variable. For instance, `privkey = A` refers to the privkey fetches its value from Environment Variable A.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
@@ -74,7 +74,7 @@ The maximum payload size for RPC requests, primarily for limiting the `send_rawT
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Uint | 1MB | Byte |  False  |
+| Uint | 1024\*1024\*1024 | Byte |  False  |
   
 ### http_listening_address
 
@@ -83,7 +83,14 @@ The HTTP listening port.
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | SocketAddr | - | - |  False  |
-  
+
+For example:
+
+```toml
+[rpc]
+http_listening_address = "127.0.0.1:8002"
+```
+
 ### ws_listening_address
 
 The WebSocket listening port.
@@ -91,6 +98,13 @@ The WebSocket listening port.
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | SocketAddr | - | - |  False  |
+
+For example:
+
+```toml
+[rpc]
+ws_listening_address = "127.0.0.1:8012"
+```
   
 ### client_version
 
@@ -112,12 +126,19 @@ The maximum gas limit allowed for RPC.
 
 ### bootstraps
 
-An array containing the list of bootstrap nodes.
+An array containing the [multiaddr](https://multiformats.io/multiaddr/) of bootstrap nodes. A [peer ID](https://github.com/multiformats/multibase) is required for each multiaddr, which is `sha256(pub_key)` with [base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58) encoding. 
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Vec<String\> | - | - |  False  |
-  
+
+For example:
+
+```toml
+[[network.bootstraps]]
+multi_address = "/ip4/127.0.0.1/tcp/10001/p2p/QmNk6bBwkLPuqnsrtxpp819XLZY3ymgjs3p1nKtxBVgqxj"
+```
+
 ### listening_address
 
 The listening address.
@@ -125,6 +146,13 @@ The listening address.
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | MultiAddr | - | - |  False  |
+
+For example:
+
+```toml
+[network]
+listening_address = "/ip4/127.0.0.1/tcp/10000"
+```
 
 ### max_connected_peers
 
@@ -244,7 +272,7 @@ The path of log files.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| String | data_path/logs | - |  True  |
+| String | `data_path/logs` | - |  True  |
   
 ### log_to_console
 
@@ -281,6 +309,7 @@ The log output level defined by module.
 For example:
 
 ```toml
+[logger]
 modules_level = { "overlord::state::process" = "debug", core_consensus = "error" }
 ```
 
@@ -304,7 +333,7 @@ The cache size for each column family. Larger value consumes more memory. Recomm
   
 ### options_file
 
-The path to the RocksDB configuration file. It is recommended to use the provided configuration file.
+The path to the RocksDB configuration file. It is recommended to use the [provided](https://github.com/axonweb3/axon/blob/main/devtools/chain/default.db-options) configuration file.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
@@ -312,7 +341,7 @@ The path to the RocksDB configuration file. It is recommended to use the provide
 
 ## Jaeger (Optional)
 
-### service_name (Optional)
+### service_name
 
 The name of service.
 
@@ -320,7 +349,7 @@ The name of service.
 | --------- | ------------ | ---- | -------- |
 | String | - | - |  True  |
   
-### tracing_address (Optional)
+### tracing_address
 
 The address to send tracing span.
   
@@ -328,7 +357,7 @@ The address to send tracing span.
 | --------- | ------------ | ---- | -------- |
 | SocketAddr | - | - |  True  |
   
-### tracing_batch_size (Optional)
+### tracing_batch_size
 
 The size of tracing batch.
   
@@ -338,7 +367,7 @@ The size of tracing batch.
   
 ## Prometheus (Optional)
 
-### listening_address (Optional)
+### listening_address
 
 The Prometheus listening port.
   
