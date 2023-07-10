@@ -50,6 +50,7 @@
 /* font-size */
 body {
   font-family: Montserrat, serif !important;
+  text-rendering: auto;
   font-size: 16px;
 }
 
