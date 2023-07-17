@@ -126,7 +126,7 @@ The maximum gas limit allowed for RPC.
 
 ### bootstraps
 
-An array containing the [multiaddr](https://multiformats.io/multiaddr/) of bootstrap nodes. A [peer ID](https://github.com/multiformats/multibase) is required for each multiaddr, which is `sha256(pub_key)` with [base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58) encoding. 
+An array containing the [multiaddr](https://github.com/multiformats/multiaddr#multiaddr) of bootstrap nodes. A [peer ID](https://github.com/multiformats/multibase) is required for each multiaddr, which is `sha256(pub_key)` with [base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58) encoding. 
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
