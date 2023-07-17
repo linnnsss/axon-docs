@@ -33,7 +33,8 @@ Let's use the MemPool module as an example.
 
 ### MemPoolAdapter
 This is the abstract trait for the MemPool adapter, which declares all the external interfaces required by the MemPool module. The specific implementation is as follows:
-```Rust
+
+```rust
 pub trait MemPoolAdapter: Send + Sync {
     async fn pull_txs(
         &self,
@@ -56,13 +57,13 @@ pub trait MemPoolAdapter: Send + Sync {
     ) -> ProtocolResult<U256>;
 
     async fn check_transaction(&self, ctx: Context, tx: &SignedTransaction) -> ProtocolResult<()>;
-
     ...
 }
 ```
 ### DefaultMemPoolAdapter
 DefaultMemPoolAdapter is the actual implementation of the MempoolAdapter in the Axon code, as shown below:
-```Rust
+
+```rust
 pub struct DefaultMemPoolAdapter<C, N, S, DB, I> {
     network:  N,
     storage:  Arc<S>,
@@ -168,6 +169,7 @@ where
         Ok(tx.transaction.unsigned.nonce() - account.nonce)
     }
     ...
+}
 ```
 You can see that some interface implementations are relatively complex, such as `check_authorization`.
 
@@ -185,7 +187,8 @@ The class diagram suggests that, except for DefaultMemPoolAdapter, the remaining
 
 ### Simplified Testing
 MemPoolAdapter also facilitates testing. As shown below, the HashMemPoolAdapter implemented tested is much simpler than the actual implementation of HashMemPoolAdapter, which is DefaultMemPoolAdapter.
-```Rust
+
+```rust
 pub struct HashMemPoolAdapter {
     network_txs: DashMap<Hash, SignedTransaction>,
 }
@@ -232,14 +235,15 @@ impl MemPoolAdapter for HashMemPoolAdapter {
     ) -> ProtocolResult<U256> {
         Ok(U256::zero())
     }
-...
+    ...
+}
 ```
 The adapter pattern effectively encapsulates external modules like Storage and Network. Comparing it with DefaultMemPoolAdapter, we can see that the implementation of HashMemPoolAdapter is straightforward. For instance, in transaction pool module testing, there may be no specific requirements for the `check_authorization` interface. In such cases, we can simply return Ok(U256::zero()), significantly simplifying the testing code.
 
 ## Implementation of MemPool Module
 As explained earlier, the MemPool module abstracts other modules (such as Network and Storage) as traits. Similarly, MemPool module also provides services to other modules and requires its own abstraction. Specifically, it exposes the MemPool abstraction to interact with others. Here is the code for reference:
 
-```Rust
+```rust
 pub trait MemPool: Send + Sync {
     async fn insert(&self, ctx: Context, tx: SignedTransaction) -> ProtocolResult<()>;
 
@@ -274,6 +278,7 @@ pub trait MemPool: Send + Sync {
     async fn get_tx_count_by_address(&self, ctx: Context, address: H160) -> ProtocolResult<usize>;
 
     fn get_tx_from_mem(&self, ctx: Context, tx_hash: &Hash) -> Option<SignedTransaction>;
+
     fn set_args(&self, context: Context, state_root: MerkleRoot, gas_limit: u64, max_tx_size: u64);
 }
 ```
