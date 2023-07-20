@@ -13,7 +13,14 @@ In the following sections, we will explore how Axon leverages the Adapter design
 
 ## Architecture
 
-<img src={useBaseUrl("img/for-contributors/Architect design_pattern_fig.1.png")}/> 
+<img
+  src={useBaseUrl("img/for-contributors/Architect design_pattern_fig.1.png")}
+  style={{
+    maxHeight: '500px',
+    display: 'block',
+    margin: '0 auto',
+  }}
+/>
 
 As illustrated above, Axon consists primarily of the following modules: Web3 RPC (Ethereum-compatible), Network, Sync, Consensus; [MemPool](https://docs.axonweb3.io/getting-started/for-contributor/mempool) (aka., memory pool, or transaction pool), [Executor](https://docs.axonweb3.io/getting-started/for-contributor/executor) (EVM), [Interoperability](https://docs.axonweb3.io/getting-started/for-contributor/interoperability), and [Storage](https://docs.axonweb3.io/getting-started/for-contributor/storage) (KV database).
 
@@ -29,7 +36,14 @@ The core idea involves abstracting the required functionality of each module fro
 ### Mempool Class Diagram
 Let's use the MemPool module as an example.
 
-<img src={useBaseUrl("img/for-contributors/MemPool module Design pattern fig.2.png")}/> 
+<img
+  src={useBaseUrl("img/for-contributors/MemPool module Design pattern fig.2.png")}
+  style={{
+    maxHeight: '500px',
+    display: 'block',
+    margin: '0 auto',
+  }}
+/>
 
 ### MemPoolAdapter
 This is the abstract trait for the MemPool adapter, which declares all the external interfaces required by the MemPool module. The specific implementation is as follows:
