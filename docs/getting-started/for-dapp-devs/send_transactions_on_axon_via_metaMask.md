@@ -20,7 +20,11 @@ This guide provides instructions for sending transactions on Axon via MetaMask a
 
 `cargo run --release -- -c devtools/chain/config.toml -g devtools/chain/genesis_single_node.json`
 
-Once the node has been successfully set up, you will notice that the block height is increasing, for instance: > Overlord: state go to new height 2171.
+Once the node has been successfully set up, you will notice that the block height is increasing, for instance: 
+
+```log
+Overlord: state go to new height 2171.
+```
 
 ### 1.2 Add Axon to MetaMask's Local Network
 
