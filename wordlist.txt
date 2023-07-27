@@ -315,6 +315,7 @@ delegator
 delegators
 Delegators
 incentivized
+incentivizes
 staker
 Staker
 stakers
