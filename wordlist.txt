@@ -309,3 +309,15 @@ vectorized
 Req
 Ryzen
 RTT
+AT
+ATs
+delegator
+delegators
+Delegators
+incentivized
+staker
+Staker
+stakers
+permissionless
+onwards
+Stakers
