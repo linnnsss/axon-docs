@@ -1,7 +1,7 @@
 ---
 title: Faucet
 hide_title: true
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
