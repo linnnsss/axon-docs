@@ -92,7 +92,7 @@ pub fn expand_rpc_metrics(attr: TokenStream, func: TokenStream) -> TokenStream {
             let ret: #func_ret_ty = #func_block;
 
             if ret.is_err() {
-								// Report failure to Prometheus.
+			// Report failure to Prometheus.
                 common_apm::metrics::api::API_REQUEST_RESULT_COUNTER_VEC_STATIC
                     .#func_ident
                     .failure
