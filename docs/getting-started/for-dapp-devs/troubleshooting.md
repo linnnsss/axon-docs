@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 hide_title: true
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
