@@ -45,7 +45,7 @@ blockscan     | 2023-08-25T08:45:24.008 application=indexer fetcher=empty_blocks
 ```
 
 ### Access the Chain
-Use [Etheruem JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) to interact with the Axon node. For instance, to get the chain ID of the Axon devnet, execute the following cURL command:
+Use [Ethereum JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc) to interact with the Axon node. For instance, to get the chain ID of the Axon devnet, execute the following cURL command:
 ```bash
 # Get the chain ID of the Axon devnet
 curl --location --request POST 'http://127.0.0.1:8000' \
