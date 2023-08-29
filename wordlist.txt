@@ -332,3 +332,8 @@ testnet
 Testnet
 test-net
 Test-net
+Blockscan
+blockscan
+devnet
+cURL
+Postgres
