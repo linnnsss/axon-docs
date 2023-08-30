@@ -340,3 +340,5 @@ Postgres
 Blockscout
 blockscout
 BlockScan
+dev
+env
