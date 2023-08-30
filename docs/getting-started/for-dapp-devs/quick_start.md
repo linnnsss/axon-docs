@@ -6,12 +6,12 @@ sidebar_position: 1
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Quick Start: Running Axon and Blockscan Locally with Docker
+# Quick Start: Running Axon and BlockScan Locally with Docker
 
-Run Axon and it's explorer ([blockscan](https://github.com/Magickbase/blockscan)) locally in Docker containers using [docker-compose](https://github.com/docker/compose). Please read [the `docker-compose` file](https://github.com/axonweb3/axon/blob/main/devtools/chain/docker-compose.yml) to learn more about the services:
+Run Axon and it's explorer ([BlockScan](https://github.com/Magickbase/blockscan)) locally in Docker containers using [docker-compose](https://github.com/docker/compose). Please read [the `docker-compose` file](https://github.com/axonweb3/axon/blob/main/devtools/chain/docker-compose.yml) to learn more about the services:
 
 - Axon node
-- Blockscan as the explorer of Axon
+- BlockScan as the explorer of Axon
 - Postgres database
 
 **Note**: This integration is not ready for production use.
@@ -61,14 +61,14 @@ curl --location --request POST 'http://127.0.0.1:8000' \
 {"jsonrpc":"2.0","result":"0x7e6","id":42}
 ```
 
-### Access [Blockscout](http://127.0.0.1:4020)
-To access the Blockscout explorer, open your browser and visit http://127.0.0.1:4020. This will allow you to explore the Axon blockchain using the Blockscout interface.
+### Access [BlockScan](http://127.0.0.1:4020)
+To access the BlockScan explorer, open your browser and visit http://127.0.0.1:4020. This will allow you to explore the Axon blockchain using the BlockScan interface.
 [//]: # (markdown-link-check-config: link-check-config.json)
 
 <img src={useBaseUrl("img/or-dapp-devs/quick_start/blockscan-screenshot.png")}/>
 
 ## You Are Good to Go!
 Congratulations! 
-You have successfully set up and run Axon and Blockscan locally in Docker containers. You can now start exploring the Axon blockchain and interacting with the services.
+You have successfully set up and run Axon and BlockScan locally in Docker containers. You can now start exploring the Axon blockchain and interacting with the services.
 
 Next Steps: [Deploy and Interact with a Solidity Contract](https://docs.axonweb3.io/getting-started/for-dapp-devs/deploy_solidity)
