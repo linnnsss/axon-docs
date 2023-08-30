@@ -61,8 +61,9 @@ curl --location --request POST 'http://127.0.0.1:8000' \
 {"jsonrpc":"2.0","result":"0x7e6","id":42}
 ```
 
-### Access [Blockscan](http://127.0.0.1:4020)
-To access the Blockscan explorer, open your browser and visit http://127.0.0.1:4020. This will allow you to explore the Axon blockchain using the Blockscan interface.
+### Access [Blockscout](http://127.0.0.1:4020)
+To access the Blockscout explorer, open your browser and visit http://127.0.0.1:4020. This will allow you to explore the Axon blockchain using the Blockscout interface.
+[//]: # (markdown-link-check-config: link-check-config.json)
 
 <img src={useBaseUrl("img/or-dapp-devs/quick_start/blockscan-screenshot.png")}/>
 
