@@ -8,7 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Quick Start: Running Axon and Blockscan Locally with Docker
 
-Run Axon and it's explorer ([blockscan](https://github.com/Magickbase/blockscan)) locally in Docker containers using [docker-compose](https://github.com/docker/compose). Please read [the `docker-compose` file](./docker-compose.yml) to learn more about the services:
+Run Axon and it's explorer ([blockscan](https://github.com/Magickbase/blockscan)) locally in Docker containers using [docker-compose](https://github.com/docker/compose). Please read [the `docker-compose` file](https://github.com/axonweb3/axon/blob/main/devtools/chain/docker-compose.yml) to learn more about the services:
 
 - Axon node
 - Blockscan as the explorer of Axon
