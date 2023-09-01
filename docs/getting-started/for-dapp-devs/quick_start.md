@@ -65,7 +65,7 @@ curl --location --request POST 'http://127.0.0.1:8000' \
 To access the BlockScan explorer, open your browser and visit http://127.0.0.1:4020. This will allow you to explore the Axon blockchain using the BlockScan interface.
 [//]: # (markdown-link-check-config: link-check-config.json)
 
-<img src={useBaseUrl("img/or-dapp-devs/quick_start/blockscan-screenshot.png")}/>
+<img src={useBaseUrl("img/for-dapp-devs/quick_start/blockscan-screenshot.png")}/>
 
 ## You Are Good to Go!
 Congratulations! 
