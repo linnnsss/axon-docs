@@ -9,9 +9,6 @@
                 <a href="https://twitter.com/AxonWeb3">
                     <img src="/img/twitter_${theme}.svg" alt="Twitter"/>
                 </a>
-                <a href="https://medium.com/@axon_web3">
-                    <img src="/img/medium_${theme}.svg" alt="Medium"/>
-                </a>
                 `;
         const footerLogo = document.getElementById('footer-logo');
         footerLogo.setAttribute('src', `/img/logo_${theme}.png`);
