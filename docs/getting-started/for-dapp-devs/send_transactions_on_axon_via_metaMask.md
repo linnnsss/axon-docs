@@ -46,19 +46,14 @@ Overlord: state go to new height 2171.
 
 On the <b>Networks</b> page, make sure that the <b>New RPC URL</b> and <b>Chain ID</b> are configured according to the following information. Copy and paste the text from the boxes below:
 
-**New RPC URL**
+**New RPC URL**: http://localhost:8000
 
-```
- http://localhost:8000
-```
+**Chain ID**: 0x41786f6e
+> This is the hexadecimal of ASCII string "Axon"
 
-**Chain ID**
 
-```
-2022
-```
+If you know Axon well enough, you can modify the <b>RPC URL</b> and <b>Chain ID</b>. They are in [`devtools/chain/config.toml`](https://github.com/axonweb3/axon/blob/88c9a91354187f7935d4a17d1e0bbc9ef517519f/devtools/chain/config.toml#L7-L9) and [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/88c9a91354187f7935d4a17d1e0bbc9ef517519f/devtools/chain/specs/single_node/chain-spec.toml#L8-L9).
 
-If you know Axon well enough, you can modify the <b>RPC URL</b> and <b>Chain ID</b>. They are in `devtools/chain/config.toml` and `devtools/chain/genesis_single_node.json`.
 
 #### Save Axon Network
 
