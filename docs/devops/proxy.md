@@ -41,7 +41,7 @@ do change, only a minimum fraction of IPs will be mapped to a different node. Th
 
 Active health checking is supported: when enabled axon-proxy will periodically check whether the backend nodes are healthy. Unhealthy nodes are excluded in load balancing. We are also planning to enhance the health checking by also considering block syncing status: nodes that fall behind or haven’t caught up yet probably shouldn’t be selected (inspired by [dshackle](https://github.com/emeraldpay/dshackle)).
 
-In case a node doesn’t respond timely but active health checking hasn’t detected the issue yet, the failover mechanism comes into play: a second node is attempted as long as it is considered safe.  Unlike an HTTP load balancer that only sees POST requests, not knowing which ones are [safe to retry](https://serverfault.com/questions/528653), Axon-proxy can examine the method name and retry all stateless or idempotent requests.
+In case a node doesn’t respond timely but active health checking hasn’t detected the issue yet, the failover mechanism comes into play: a second node is attempted as long as it is considered safe.  Unlike an HTTP load balancer that only sees POST requests, not knowing which ones are [safe to retry](https://serverfault.com/questions/528653/how-can-i-stop-nginx-from-retrying-put-or-post-requests-on-upstream-server-timeo), Axon-proxy can examine the method name and retry all stateless or idempotent requests.
 
 ### Config Reloading
 
