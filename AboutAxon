@@ -22,8 +22,7 @@ This parallel execution supports over 3000 TPS (Transaction Per Second) across h
 
 Axon provides a full-fledged toolkit that enables web 3 developers to start building right away without having to understand the fundamentals. Designed with a different approach than Relayers, Axon automates off-chain communication, thereby significantly reducing deployment costs.
 
-The hands-on tutorial *Zero to Axon with Axon-cli* teaches you how to build a chain from scratch in less than 15 minutes.
-
+Start running Axon and BlockScan locally via Docker with [this guide](https://docs.axonweb3.io/getting-started/for-dapp-devs/quick_start)
 
 
 ### Highly Interoperable
