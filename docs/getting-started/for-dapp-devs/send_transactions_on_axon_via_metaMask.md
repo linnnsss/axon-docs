@@ -16,14 +16,12 @@ This guide provides instructions for sending transactions on Axon via MetaMask a
 
 ### 1.1 Local Setup
 
-[Download Axon](https://github.com/axonweb3/axon), find <b>Install</b> in <b>README</b>, and run the following commands to start the node:
-
-`cargo run --release -- -c devtools/chain/config.toml -g devtools/chain/genesis_single_node.json`
+This document assumes that you have followed [the Axon quick start](./quick_start.md) to run an Axon node.
 
 Once the node has been successfully set up, you will notice that the block height is increasing, for instance: 
 
 ```log
-Overlord: state go to new height 2171.
+Overlord: state goto new height 2171.
 ```
 
 ### 1.2 Add Axon to MetaMask's Local Network
@@ -46,10 +44,14 @@ Overlord: state go to new height 2171.
 
 On the <b>Networks</b> page, make sure that the <b>New RPC URL</b> and <b>Chain ID</b> are configured according to the following information. Copy and paste the text from the boxes below:
 
+**Network name**: axon-devnet
+
 **New RPC URL**: http://localhost:8000
 
 **Chain ID**: 0x41786f6e
 > This is the hexadecimal of ASCII string "Axon"
+
+**Currency symbol**: axon
 
 
 If you know Axon well enough, you can modify the <b>RPC URL</b> and <b>Chain ID</b>. They are in [`devtools/chain/config.toml`](https://github.com/axonweb3/axon/blob/88c9a91354187f7935d4a17d1e0bbc9ef517519f/devtools/chain/config.toml#L7-L9) and [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/88c9a91354187f7935d4a17d1e0bbc9ef517519f/devtools/chain/specs/single_node/chain-spec.toml#L8-L9).
@@ -67,13 +69,13 @@ Once you have filled out all the items above, click <b>Save</b> and you will be 
 
 Add your Axon Genesis account to the local network. MetaMask supports importing accounts via both private keys and keystore files.
 
-Here we use the private key. In Axon’s repository, find `devtools/chain/config.toml` and copy the corresponding content of the privKey.
+In Axon’s repository, the Genesis accounts and their associated funds are configured in [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/6fe5777e0b4a9b994dc84a56a00005745fd05085/devtools/chain/specs/single_node/chain-spec.toml#L18-L56). Select an account and then use its corresponding private key.
 
-For now, it is `0x37aa0f893d05914a4def0460c0a984d3611546cfb26924d7a7ca6e0db9950a2d`.
+For example, the private key `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`, which corresponds to the address `0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`, is derived from the mnemonic phrase `test test test test test test test test test test test junk` for the first account. This mnemonic phrase is consistent with [the one used for the initialization of the Hardhat Network](https://hardhat.org/hardhat-network/docs/reference#initial-state).
 
-The account and the balance will be displayed once the account is added. The Genesis account holds 1000,000,000,000,00 AXON configured in `devtools/chain/config.toml`.
+The account and the balance will be displayed once the private key is added. This Genesis account holds 100,000,000,000,000 AXON, as configured in [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/6fe5777e0b4a9b994dc84a56a00005745fd05085/devtools/chain/specs/single_node/chain-spec.toml#L20).
 
-<img alt="Untitled 1" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 1.png")}  width="80%"/>
+<img alt="Untitled 1" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 1.png")}  width="50%"/>
 
 ### 2.2 Send a Transaction
 
