@@ -18,7 +18,7 @@ The address precompile contract is described by the last 2 bytes:
 
 | Byte range [0..18] | Byte range [18..20] |
 | --- | --- |
-| 0000000000000000 | addr |
+| 0000000000000000 | `addr` |
 
 ### EcRecover
 
@@ -26,15 +26,8 @@ The address precompile contract is described by the last 2 bytes:
 | --- | --- | --- | --- |
 | 0x00000000000000000001 | 3000 | hash, v, r, s | publicAddress |
 
-Elliptic curve digital signature algorithm (ECDSA) public key recovery function.
+EcRecover is a elliptic curve digital signature algorithm (ECDSA) public key recovery function. For details, see [this page](https://www.evm.codes/precompiled#0x01?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### SHA2-256
 
@@ -42,15 +35,8 @@ Elliptic curve digital signature algorithm (ECDSA) public key recovery function.
 | --- | --- | --- | --- |
 | 0x00000000000000000002 | 60 | data | hash |
 
-Hash function used in Bitcoin.
+SHA2-256 is the hash function used in Bitcoin. For details, see [this page](https://www.evm.codes/precompiled#0x02?fork=london)
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### RIPEMD-160
 
@@ -58,15 +44,8 @@ Hash function used in Bitcoin.
 | --- | --- | --- | --- |
 | 0x00000000000000000003 | 600 | data | hash |
 
-Hash function
+For details, see [this page](https://www.evm.codes/precompiled#0x03?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### Identity
 
@@ -74,15 +53,8 @@ Hash function
 | --- | --- | --- | --- |
 | 0x00000000000000000004 | 15 | data | data |
 
-It returns the input.
+Identity copies and returns input data. For details, see [this page](https://www.evm.codes/precompiled#0x04?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### Modexp
 
@@ -90,15 +62,8 @@ It returns the input.
 | --- | --- | --- | --- |
 | 0x00000000000000000005 | 200 | Bsize, Esize, Msize, B, E, M | value |
 
-Arbitrary-precision exponentiation under modulo.
+Modexp is an arbitrary-precision exponentiation under modulo. For details, see [this page](https://www.evm.codes/precompiled#0x05?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### EcAdd
 
@@ -106,15 +71,8 @@ Arbitrary-precision exponentiation under modulo.
 | --- | --- | --- | --- |
 | 0x00000000000000000006 | 150 | x1, x2, y1, y2 | x, y |
 
-Point addition (ADD) on the elliptic curve `alt_bn128`.
+EcAdd is the point addition (ADD) on the elliptic curve alt_bn128. For details, see [this page](https://www.evm.codes/precompiled#0x06?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### EcMul
 
@@ -122,15 +80,7 @@ Point addition (ADD) on the elliptic curve `alt_bn128`.
 | --- | --- | --- | --- |
 | 0x00000000000000000007 | 6000 | x1, x2, s | x, y |
 
-Scalar multiplication (MUL) on the elliptic curve `alt_bn128`.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
+EcMul is the scalar multiplication (MUL) on the elliptic curve alt_bn128. For details, see [this page](https://www.evm.codes/precompiled#0x07?fork=london).
 
 ### EcPairing
 
@@ -138,15 +88,7 @@ Scalar multiplication (MUL) on the elliptic curve `alt_bn128`.
 | --- | --- | --- | --- |
 | 0x00000000000000000008 | 45000 | x1, y1, x2, y2, …, xk, yk | success |
 
-Bilinear function on groups on the elliptic curve `alt_bn128`.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
+EcPairing is the bilinear function on groups on the elliptic curve `alt_bn128`. For details, see [this page](https://www.evm.codes/precompiled#0x08?fork=london).
 
 ### Blake2f
 
@@ -154,92 +96,94 @@ Bilinear function on groups on the elliptic curve `alt_bn128`.
 | --- | --- | --- | --- |
 | 0x00000000000000000009 | 0 | rounds, h, m, t, f | h |
 
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
+Blake2f is the compression function F used in the BLAKE2 cryptographic hashing algorithm. For details,  see [this page](https://www.evm.codes/precompiled#0x09?fork=london).
 
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
-
-### Metadata
-
-| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
-| --- | --- | --- | --- |
-| 0x00000000000000000101 | 0 | rounds, h, m, t, f | Metadata |
-
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
 
 ### GetHeader
 
-| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
-| --- | --- | --- | --- |
-| 0x00000000000000000102 | 0 | rounds, h, m, t, f | HeaderInfo |
-
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
+🚧 Information updates in progress - stay tuned!
 
 ### GetCell
 
-| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
-| --- | --- | --- | --- |
-| 0x00000000000000000103 | 0 | rounds, h, m, t, f | cellInfo |
-
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
+🚧 Information updates in progress - stay tuned!
 
 ### CallCkbVm
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000104 | 300 | rounds, h, m, t, f | data |
+| 0x00000000000000000104 | 300 | cell dep, args | big-endian bytes |
 
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
-
-<details><summary>Click here to view ABI</summary>
+Call a script that runs in CKB-VM and return the execute result.
 
 #### Inputs
 
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct CellDep {
+    OutPoint outPoint;
+    uint32   index;
+}
+
+struct InputArgs {
+    bytes[] args;
+}
+```
+
+</details>
+
 #### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Result {
+    int8 ret;
+}
+```
+
+</details>
+
+#### Example
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+contract CallCkbVm {
+    event CallCkbVmEvent(int8);
+    event NotGetCellEvent();
+
+    int8 ret;
+
+    function testCallCkbVm(
+        bytes32 txHash,
+        uint32 index,
+        uint8 depType,
+        bytes[] memory input_args
+    ) public {
+        OutPoint memory outPoint = OutPoint(txHash, index);
+        (bool isSuccess, bytes memory res) = address(0x0104).staticcall(
+            abi.encode(CellDep(outPoint, depType), input_args)
+        );
+
+        if (isSuccess) {
+            ret = int8(uint8(res[0]));
+            emit CallCkbVmEvent(ret);
+        } else {
+            emit NotGetCellEvent();
+        }
+    }
+
+    function callCkbVm() public view returns (int8) {
+        return ret;
+    }
+}
+
+```
 
 </details>
 
 ### VerifyInCkbVm
 
-| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
-| --- | --- | --- | --- |
-| 0x00000000000000000105 | 600 | rounds, h, m, t, f | result |
+🚧 Information updates in progress - stay tuned!
 
-Compression function F used in the BLAKE2 cryptographic hashing algorithm.
-
-<details><summary>Click here to view ABI</summary>
-
-#### Inputs
-
-#### Output
-
-</details>
