@@ -364,3 +364,7 @@ GetCell
 cellInfo
 CallCkbVm
 VerifyInCkbVm
+bn
+args
+dep
+bilinear
