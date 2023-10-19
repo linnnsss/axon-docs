@@ -7,7 +7,13 @@ sidebar_position: 1
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # System Contracts
-System contracts are built-in contracts that are more advanced than precompiled contracts and facilitate inter-chain communication.
+System contracts are built-in contracts designed to facilitate inter-chain communications.
+
+:::tip
+
+Notice that only **validator** can call system contracts.
+
+:::
 
 ## Native Token
 The Native Token is the contract for Axon Token (AT), applying balance changes to the account.
