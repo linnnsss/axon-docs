@@ -146,7 +146,7 @@ struct Result {
 
 #### Example
 
-<details><summary>Click here to view ABI</summary>
+<details><summary>Click here to view example</summary>
 
 ```solidity
 contract CallCkbVm {
