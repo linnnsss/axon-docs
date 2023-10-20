@@ -44,7 +44,7 @@ SHA2-256 is the hash function used in Bitcoin. For details, see [this page](http
 | --- | --- | --- | --- |
 | 0x00000000000000000003 | 600 | data | hash |
 
-For details, see [this page](https://www.evm.codes/precompiled#0x03?fork=london).
+A hash function. For details, see [this page](https://www.evm.codes/precompiled#0x03?fork=london).
 
 
 ### Identity
