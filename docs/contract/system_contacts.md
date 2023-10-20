@@ -7,8 +7,24 @@ sidebar_position: 1
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # System Contracts
+System contracts are built-in contracts designed to facilitate inter-chain communications.
+
+:::tip
+
+Notice that only **validator** can call system contracts.
+
+:::
+
+## Native Token
+The Native Token is the contract for Axon Token (AT), applying balance changes to the account.
+
+### Address
+```
+0xffffffffffffffffffffffffffffffffffffff00
+```
 
 ## Metadata
+The Metadata Contract records the metadata of the chain, such as validator identities and epoch. Applications built on Axon can interact with the Metadata Contract through the precompiled contract `Metadata`.
 
 ### Address
 
@@ -18,7 +34,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ### ABI
 
-<details><summary>(click here to view ABI)</summary>
+<details><summary>Click here to view</summary>
 
 ```json
 [
@@ -307,6 +323,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 </details>
 
 ## CKB Light Client
+The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It receives new headers from CKB Layer 1 through Forcerelay, an essential part of Axon that enables the interaction between Axon-based chains, Ethereum, and Cosmos-SDK chains via IBC protocol. Upon receiving new headers, the CKB Light Client Contract automatically updates header info, enabling applications to access this data via the precompiled contract `GetHeader`.
 
 ### Address
 
@@ -316,7 +333,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ### ABI
 
-<details><summary>(click here to view ABI)</summary>
+<details><summary>Click here to view</summary>
 
 ```json
 [
@@ -427,6 +444,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 </details>
 
 ## Image Cell
+The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applications on Axon to read CKB data through the precompiled contract `GetCell`. 
 
 ### Address
 
@@ -436,7 +454,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ### ABI
 
-<details><summary>(click here to view ABI)</summary>
+<details><summary>Click here to view</summary>
 
 ```json
 [
