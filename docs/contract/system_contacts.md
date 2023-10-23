@@ -29,7 +29,7 @@ The Metadata Contract records the metadata of the chain, such as validator ident
 ### Address
 
 ```
-0x10000000000000000001
+0xFfFfFFFfFFfFFFFfFFFFffFfFFfffFFFfffffF
 ```
 
 ### ABI
