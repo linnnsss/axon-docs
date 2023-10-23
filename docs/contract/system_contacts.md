@@ -29,7 +29,7 @@ The Metadata Contract records the metadata of the chain, such as validator ident
 ### Address
 
 ```
-0x10000000000000000001
+0xffffffffffffffffffffffffffffffffffffff01
 ```
 
 ### ABI
@@ -328,7 +328,7 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
 ### Address
 
 ```
-0x10000000000000000003
+0xffffffffffffffffffffffffffffffffffffff03
 ```
 
 ### ABI
@@ -449,7 +449,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
 ### Address
 
 ```
-0x10000000000000000004
+0xffffffffffffffffffffffffffffffffffffff04
 ```
 
 ### ABI

@@ -18,67 +18,61 @@ The address precompile contract is described by the last 2 bytes:
 
 | Byte range [0..18] | Byte range [18..20] |
 | --- | --- |
-| 0000000000000000 | `addr` |
+| 000000000000000000000000000000000000 | `addr` |
 
 ### EcRecover
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000001 | 3000 | hash, v, r, s | publicAddress |
+| 0x0000000000000000000000000000000000000001 | 3000 | hash, v, r, s | publicAddress |
 
 EcRecover is a elliptic curve digital signature algorithm (ECDSA) public key recovery function. For details, see [this page](https://www.evm.codes/precompiled#0x01?fork=london).
-
 
 ### SHA2-256
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000002 | 60 | data | hash |
+| 0x0000000000000000000000000000000000000002 | 60 | data | hash |
 
 SHA2-256 is the hash function used in Bitcoin. For details, see [this page](https://www.evm.codes/precompiled#0x02?fork=london)
-
 
 ### RIPEMD-160
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000003 | 600 | data | hash |
+| 0x0000000000000000000000000000000000000003 | 600 | data | hash |
 
 A hash function. For details, see [this page](https://www.evm.codes/precompiled#0x03?fork=london).
-
 
 ### Identity
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000004 | 15 | data | data |
+| 0x0000000000000000000000000000000000000004 | 15 | data | data |
 
 Identity copies and returns input data. For details, see [this page](https://www.evm.codes/precompiled#0x04?fork=london).
-
 
 ### Modexp
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000005 | 200 | Bsize, Esize, Msize, B, E, M | value |
+| 0x0000000000000000000000000000000000000005 | 200 | Bsize, Esize, Msize, B, E, M | value |
 
 Modexp is an arbitrary-precision exponentiation under modulo. For details, see [this page](https://www.evm.codes/precompiled#0x05?fork=london).
-
 
 ### EcAdd
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000006 | 150 | x1, x2, y1, y2 | x, y |
+| 0x0000000000000000000000000000000000000006 | 150 | x1, x2, y1, y2 | x, y |
 
 EcAdd is the point addition (ADD) on the elliptic curve alt_bn128. For details, see [this page](https://www.evm.codes/precompiled#0x06?fork=london).
-
 
 ### EcMul
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000007 | 6000 | x1, x2, s | x, y |
+| 0x0000000000000000000000000000000000000007 | 6000 | x1, x2, s | x, y |
 
 EcMul is the scalar multiplication (MUL) on the elliptic curve alt_bn128. For details, see [this page](https://www.evm.codes/precompiled#0x07?fork=london).
 
@@ -86,7 +80,7 @@ EcMul is the scalar multiplication (MUL) on the elliptic curve alt_bn128. For de
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000008 | 45000 | x1, y1, x2, y2, …, xk, yk | success |
+| 0x0000000000000000000000000000000000000008 | 45000 | x1, y1, x2, y2, …, xk, yk | success |
 
 EcPairing is the bilinear function on groups on the elliptic curve `alt_bn128`. For details, see [this page](https://www.evm.codes/precompiled#0x08?fork=london).
 
@@ -94,10 +88,9 @@ EcPairing is the bilinear function on groups on the elliptic curve `alt_bn128`. 
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000009 | 0 | rounds, h, m, t, f | h |
+| 0x0000000000000000000000000000000000000009 | 0 | rounds, h, m, t, f | h |
 
 Blake2f is the compression function F used in the BLAKE2 cryptographic hashing algorithm. For details,  see [this page](https://www.evm.codes/precompiled#0x09?fork=london).
-
 
 ### GetHeader
 
@@ -111,7 +104,7 @@ Blake2f is the compression function F used in the BLAKE2 cryptographic hashing a
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
-| 0x00000000000000000104 | 300 | cell dep, args | big-endian bytes |
+| 0x0000000000000000000000000000000000000104 | 300 | cell dep, args | big-endian bytes |
 
 Call a script that runs in CKB-VM and return the execute result.
 
@@ -186,4 +179,3 @@ contract CallCkbVm {
 ### VerifyInCkbVm
 
 🚧 Information updates in progress - stay tuned!
-
