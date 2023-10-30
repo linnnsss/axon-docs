@@ -1,0 +1,80 @@
+---
+slug: differences
+title: Differences Between Axon and Ethereum
+position: 8
+sidebar_position: 8
+---
+
+## Mining Related
+
+### `eth_getUncleByBlockHashAndIndex` API
+Since Axon uses BFT consensus algorithm, no uncle block exists. The RPC method always returns `null`.
+
+### `eth_getUncleByBlockNumberAndIndex` API
+Since Axon uses BFT consensus algorithm, no uncle block exists. The RPC method always returns `null`.
+
+### `eth_getUncleCountByBlockHash` API
+Since Axon uses BFT consensus algorithm, no uncle block exists. The RPC method always returns `0x0`.
+
+### `eth_getUncleCountByBlockNumber` API
+Since Axon uses BFT consensus algorithm, no uncle block exists. The RPC method always returns `0x0`.
+
+### `eth_mining` API
+Since Axon does not mine, this RPC method always returns `false`.
+
+### `eth_coinbase` API
+Since Axon does not mine, this RPC method always returns `0x0000000000000000000000000000000000000000`.
+
+### `eth_hashrate` API
+Since Axon does not mine, this RPC method always returns `0x1`.
+
+### `eth_submitWork` API
+Since Axon does not mine, this RPC method always returns `true`.
+
+### `eth_submitHashrate` API
+Since Axon does not mine, this RPC method always returns `true`.
+
+### `Difficulty` opcode
+Since Axon does not mine, this opcode always uses `0x1`.
+
+### `gas_price` calculation
+Since Axon does not mine, Axon simplifies the process of `gas_price` calculation of [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transaction as `gas_price = max(tx.gas_price, tx.max_fee_per_gas)`.
+
+## Wallet Related
+
+### `eth_accounts` API
+Since Axon does not mine, this RPC method is not supported.
+
+### `eth_sign` API
+Since Axon does not mine, this RPC method is not supported.
+
+### `eth_signTransaction` API
+Since Axon does not mine, this RPC method is not supported.
+
+### `eth_sendTransaction` API
+Since Axon does not mine, this RPC method is not supported.
+
+## Others
+
+### Transactions Root Calculation
+The transactions root calculation in Ethereum is as follows:
+```rust
+let mut trie = Trie::new(memory_db);
+for (i, tx) in transactions.iter().enumerate() {
+    let key = rlp_encode(&i);
+    let val = rlp_encode(&tx);
+    trie.insert(key, val);
+}
+block.header.transactions_root = trie.root();
+```
+
+The calculation in Axon is:
+```rust
+let mut trie = Trie::new(memory_db);
+for (i, tx) in transactions.iter().enumerate() {
+    let key = rlp_encode(&i);
+    let val = rlp_encode(&keccak256(rlp_encode(&tx)));
+    trie.insert(key, val);
+}
+block.header.transactions_root = trie.root();
+```
