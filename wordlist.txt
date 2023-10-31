@@ -368,3 +368,5 @@ bn
 args
 dep
 bilinear
+hardfork
+Hardfork
