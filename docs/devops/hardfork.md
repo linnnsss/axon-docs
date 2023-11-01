@@ -1,3 +1,9 @@
+---
+title: Hardfork
+hide_title: true
+sidebar_position: 7
+---
+
 # Hardfork
 
 Axon empowers developers to initiate hardforks. The currently available hardfork, Andromeda, takes its name from one of the 88 constellations. The upcoming hardforks on Axon will follow [this order of the constellations](https://en.wikipedia.org/wiki/IAU_designated_constellations#List). 
