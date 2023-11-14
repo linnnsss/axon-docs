@@ -328,7 +328,7 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
 ### Address
 
 ```
-0xffffffffffffffffffffffffffffffffffffff03
+0xffffffffffffffffffffffffffffffffffffff02
 ```
 
 ### ABI
@@ -449,7 +449,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
 ### Address
 
 ```
-0xffffffffffffffffffffffffffffffffffffff04
+0xffffffffffffffffffffffffffffffffffffff03
 ```
 
 ### ABI
