@@ -224,11 +224,11 @@ The number of transactions broadcasted at once.
 
 ### triedb_cache_size
 
-The size of the trie database cache. Recommended value is 500 or higher. Larger value consumes more memory.
+The size of the trie database cache. Recommended value is 200 or higher. Larger value consumes more memory.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Uint | - | - | False  |
+| Uint | 200 | - | False  |
 
 ## Consensus
 
@@ -325,7 +325,7 @@ The maximum number of open files.
   
 ### cache_size
 
-The cache size for each column family. Larger value consumes more memory. Recommended to be 50 or higher.
+The cache size for each column family. Larger value consumes more memory. Recommended to be 100 or higher.
 
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
