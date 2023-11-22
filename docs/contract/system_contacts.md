@@ -55,28 +55,13 @@ The Metadata Contract records the metadata of the chain, such as validator ident
                 "type": "uint64"
               }
             ],
-            "internalType": "struct MetadataManager.MetadataVersion",
+            "internalType": "struct MetadataType.MetadataVersion",
             "name": "version",
             "type": "tuple"
           },
           {
             "internalType": "uint64",
             "name": "epoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "gas_limit",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "gas_price",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "interval",
             "type": "uint64"
           },
           {
@@ -107,42 +92,81 @@ The Metadata Contract records the metadata of the chain, such as validator ident
                 "type": "uint32"
               }
             ],
-            "internalType": "struct MetadataManager.ValidatorExtend[]",
+            "internalType": "struct MetadataType.ValidatorExtend[]",
             "name": "verifier_list",
             "type": "tuple[]"
           },
           {
-            "internalType": "uint64",
-            "name": "propose_ratio",
-            "type": "uint64"
+            "components": [
+              {
+                "internalType": "address",
+                "name": "address_",
+                "type": "address"
+              },
+              {
+                "internalType": "uint64",
+                "name": "count",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct MetadataType.ProposeCount[]",
+            "name": "propose_counter",
+            "type": "tuple[]"
           },
           {
-            "internalType": "uint64",
-            "name": "prevote_ratio",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "precommit_ratio",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "brake_ratio",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "tx_num_limit",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "max_tx_size",
-            "type": "uint64"
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "propose_ratio",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "prevote_ratio",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "precommit_ratio",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "brake_ratio",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "tx_num_limit",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "max_tx_size",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "gas_limit",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "interval",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "max_contract_limit",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct MetadataType.ConsensusConfig",
+            "name": "consensus_config",
+            "type": "tuple"
           }
         ],
-        "internalType": "struct MetadataManager.Metadata",
+        "internalType": "struct MetadataType.Metadata",
         "name": "metadata",
         "type": "tuple"
       }
@@ -153,8 +177,46 @@ The Metadata Contract records the metadata of the chain, such as validator ident
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "construct",
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "metadata_type_id",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "checkpoint_type_id",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "xudt_args",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "stake_smt_type_id",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "delegate_smt_type_id",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "reward_smt_type_id",
+            "type": "bytes32"
+          }
+        ],
+        "internalType": "struct MetadataType.CkbRelatedInfo",
+        "name": "info",
+        "type": "tuple"
+      }
+    ],
+    "name": "setCkbRelatedInfo",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -162,84 +224,7 @@ The Metadata Contract records the metadata of the chain, such as validator ident
   {
     "inputs": [
       {
-        "internalType": "uint64",
-        "name": "epoch",
-        "type": "uint64"
-      }
-    ],
-    "name": "getMetadata",
-    "outputs": [
-      {
         "components": [
-          {
-            "components": [
-              {
-                "internalType": "uint64",
-                "name": "start",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "end",
-                "type": "uint64"
-              }
-            ],
-            "internalType": "struct MetadataManager.MetadataVersion",
-            "name": "version",
-            "type": "tuple"
-          },
-          {
-            "internalType": "uint64",
-            "name": "epoch",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "gas_limit",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "gas_price",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint64",
-            "name": "interval",
-            "type": "uint64"
-          },
-          {
-            "components": [
-              {
-                "internalType": "bytes",
-                "name": "bls_pub_key",
-                "type": "bytes"
-              },
-              {
-                "internalType": "bytes",
-                "name": "pub_key",
-                "type": "bytes"
-              },
-              {
-                "internalType": "address",
-                "name": "address_",
-                "type": "address"
-              },
-              {
-                "internalType": "uint32",
-                "name": "propose_weight",
-                "type": "uint32"
-              },
-              {
-                "internalType": "uint32",
-                "name": "vote_weight",
-                "type": "uint32"
-              }
-            ],
-            "internalType": "struct MetadataManager.ValidatorExtend[]",
-            "name": "verifier_list",
-            "type": "tuple[]"
-          },
           {
             "internalType": "uint64",
             "name": "propose_ratio",
@@ -269,52 +254,31 @@ The Metadata Contract records the metadata of the chain, such as validator ident
             "internalType": "uint64",
             "name": "max_tx_size",
             "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "gas_limit",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "interval",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "max_contract_limit",
+            "type": "uint64"
           }
         ],
-        "internalType": "struct MetadataManager.Metadata",
-        "name": "",
+        "internalType": "struct MetadataType.ConsensusConfig",
+        "name": "config",
         "type": "tuple"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "relayer",
-        "type": "address"
-      }
-    ],
-    "name": "isVerifier",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "verifierList",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
+    "name": "updateConsensusConfig",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]
@@ -341,13 +305,13 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
     "inputs": [
       {
         "internalType": "bytes32[]",
-        "name": "blockHashs",
+        "name": "blockHashes",
         "type": "bytes32[]"
       }
     ],
     "name": "rollback",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -360,7 +324,7 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
     ],
     "name": "setState",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -409,7 +373,7 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
           },
           {
             "internalType": "bytes32",
-            "name": "unclesHash",
+            "name": "extraHash",
             "type": "bytes32"
           },
           {
@@ -421,6 +385,11 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
             "internalType": "uint128",
             "name": "nonce",
             "type": "uint128"
+          },
+          {
+            "internalType": "bytes",
+            "name": "extension",
+            "type": "bytes"
           },
           {
             "internalType": "bytes32",
@@ -435,7 +404,7 @@ The CKB Light Client Contract is the light client on Axon for CKB Layer 1. It re
     ],
     "name": "update",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]
@@ -504,7 +473,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
     ],
     "name": "rollback",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -517,7 +486,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
     ],
     "name": "setState",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -639,7 +608,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
     ],
     "name": "update",
     "outputs": [],
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]
